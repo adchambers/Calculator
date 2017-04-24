@@ -1,0 +1,14 @@
+C:\Users\Adam\Dropbox\Projects\C#\Calculator\Calculator\bin\Release\Calculator.exe.config
+C:\Users\Adam\Dropbox\Projects\C#\Calculator\Calculator\bin\Release\Calculator.exe
+C:\Users\Adam\Dropbox\Projects\C#\Calculator\Calculator\bin\Release\Calculator.pdb
+C:\Users\Adam\Dropbox\Projects\C#\Calculator\Calculator\obj\Release\MainWindow.g.cs
+C:\Users\Adam\Dropbox\Projects\C#\Calculator\Calculator\obj\Release\App.g.cs
+C:\Users\Adam\Dropbox\Projects\C#\Calculator\Calculator\obj\Release\Calculator_MarkupCompile.cache
+C:\Users\Adam\Dropbox\Projects\C#\Calculator\Calculator\obj\Release\Calculator_MarkupCompile.lref
+C:\Users\Adam\Dropbox\Projects\C#\Calculator\Calculator\obj\Release\App.baml
+C:\Users\Adam\Dropbox\Projects\C#\Calculator\Calculator\obj\Release\MainWindow.baml
+C:\Users\Adam\Dropbox\Projects\C#\Calculator\Calculator\obj\Release\Calculator.g.resources
+C:\Users\Adam\Dropbox\Projects\C#\Calculator\Calculator\obj\Release\Calculator.Properties.Resources.resources
+C:\Users\Adam\Dropbox\Projects\C#\Calculator\Calculator\obj\Release\Calculator.csproj.GenerateResource.Cache
+C:\Users\Adam\Dropbox\Projects\C#\Calculator\Calculator\obj\Release\Calculator.exe
+C:\Users\Adam\Dropbox\Projects\C#\Calculator\Calculator\obj\Release\Calculator.pdb
