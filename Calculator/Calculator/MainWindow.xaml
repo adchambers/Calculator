@@ -126,7 +126,6 @@
         <Image Margin="162,43,822,663" Source="1492965060_insert-object.png" Stretch="Fill"/>
         <Image Margin="214,43,770,663" Source="1492965122_21_sharethis.png" Stretch="Fill"/>
         <ComboBox x:Name="TabController" Height="26" VerticalAlignment="Top" Margin="768,30,15.6,0" IsEditable="True" Text="Add Tab" SelectionChanged="TabController_SelectionChanged">
-            <ComboBoxItem>Calculator</ComboBoxItem>
             <ComboBoxItem>Graph</ComboBoxItem>
             <ComboBoxItem>3D Graph</ComboBoxItem>
             <ComboBoxItem>Currency Converter</ComboBoxItem>
