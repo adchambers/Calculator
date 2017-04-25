@@ -9,6 +9,7 @@
         Title="Calculator" Height="768" Width="1024" ResizeMode="NoResize" >
 
     <Grid>
+
         <DockPanel Background="#FEE6E6E6">
             <Menu DockPanel.Dock="Top" HorizontalAlignment="Left" Width="1018" VerticalAlignment="Top" Height="100" >
                 <Menu.Background>
@@ -35,9 +36,10 @@
 
         <WrapPanel Margin="310,35,0,0" VerticalAlignment="Top">
             <TabControl x:Name="TabsMenu" Width="692" Margin="0" Height="664">
-                <TabItem x:Name="Calculator0" Header="Calculator">
+                <TabItem Header="Calculator">
                     <TextBox x:Name="inputBox" HorizontalAlignment="Center" Height="628" Margin="0,4,0,0" VerticalAlignment="Top" Width="682" VerticalScrollBarVisibility="Visible"/>
                 </TabItem>
+
             </TabControl>
         </WrapPanel>
         <DockPanel Background="#FEE6E6E6" Margin="0,0,0,-714" Height="22">
@@ -51,7 +53,7 @@
             </Menu>
         </DockPanel>
 
-        <Image Margin="12,125,714,41" Source="calculator.jpg" Stretch="Fill"/>
+        <Image Margin="12,125,714,41" Source="/img/calculator.jpg" Stretch="Fill"/>
         <Button x:Name="SumButton" Content="+" HorizontalAlignment="Left" Margin="222,505,0,0" VerticalAlignment="Top"  Width="24" Height="18" HorizontalContentAlignment="Center"  Click="SumButton_Click" Style="{DynamicResource ButtonStyle1}"/>
         <Button x:Name="DifferenceButton" Content="-" HorizontalAlignment="Left" Margin="248,505,0,0" VerticalAlignment="Top"  Width="24" Height="18" HorizontalContentAlignment="Center"  Click="DifferenceButton_Click" Style="{DynamicResource ButtonStyle1}" FontSize="10"/>
         <Button x:Name="DivideButton" Content="/" HorizontalAlignment="Left" Margin="248,537,0,0" VerticalAlignment="Top"  Width="24" Height="18" HorizontalContentAlignment="Center"  Click="DivideButton_Click" Style="{DynamicResource ButtonStyle1}" FontSize="8"/>
@@ -121,19 +123,25 @@
         <TextBlock HorizontalAlignment="Left" Margin="230,525,0,0" TextWrapping="Wrap" Text="π" VerticalAlignment="Top" Foreground="#FF93DFFF" FontSize="8" FontWeight="Bold"/>
         <TextBlock HorizontalAlignment="Left" Margin="244,587,0,0" TextWrapping="Wrap" Text="~" VerticalAlignment="Top" Foreground="#FF93DFFF" FontSize="10" FontWeight="Bold"/>
         <TextBlock HorizontalAlignment="Left" Margin="244,583,0,0" TextWrapping="Wrap" Text="~" VerticalAlignment="Top" Foreground="#FF93DFFF" FontSize="10" FontWeight="Bold"/>
-        <Image Margin="63,43,923,663" Source="1492964945_document-open.png" Stretch="Fill"/>
-        <Image Margin="116,43,873,666" Source="1492964966_floppy_disk_save.png" Stretch="Fill"/>
-        <Image Margin="162,43,822,663" Source="1492965060_insert-object.png" Stretch="Fill"/>
-        <Image Margin="214,43,770,663" Source="1492965122_21_sharethis.png" Stretch="Fill"/>
+        <Image Margin="162,43,822,663" Source="/img/1492965060_insert-object.png" Stretch="Fill"/>
+        <Image Margin="214,43,770,663" Source="/img/1492965122_21_sharethis.png" Stretch="Fill"/>
         <ComboBox x:Name="TabController" Height="26" VerticalAlignment="Top" Margin="768,30,15.6,0" IsEditable="True" Text="Add Tab" SelectionChanged="TabController_SelectionChanged">
             <ComboBoxItem>Graph</ComboBoxItem>
             <ComboBoxItem>3D Graph</ComboBoxItem>
             <ComboBoxItem>Currency Converter</ComboBoxItem>
             <ComboBoxItem>Scratchpad</ComboBoxItem>
         </ComboBox>
+        <Button x:Name="SaveButton" HorizontalAlignment="Left" Margin="116,43,0,0" VerticalAlignment="Top" Height="29" Width="29" Click="SaveButton_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="img/1492964966_floppy_disk_save.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="OpenButton" HorizontalAlignment="Left" Margin="62,43,0,0" VerticalAlignment="Top" Height="29" Width="29" Style="{DynamicResource ButtonStyle_Save}" Click="OpenButton_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="img/1492964945_document-open.png"/>
+            </Button.Background>
+        </Button>
+
 
     </Grid>
-
-
-
 </Window>

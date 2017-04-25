@@ -55,6 +55,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="GraphLayout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -62,6 +66,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GraphLayout.xaml.cs">
+      <DependentUpon>GraphLayout.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -86,6 +93,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="img\AI\calculator.ai" />
+    <None Include="img\AI\logo.ai" />
+    <None Include="img\PSD\calculator.psd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -95,25 +105,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="calculator.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="logo.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="1492964945_document-open.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="1492964966_floppy_disk_save.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="1492965060_insert-object.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="1492965122_21_sharethis.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="bar.jpg" />
+    <Resource Include="img\1492964945_document-open.png" />
+    <Resource Include="img\1492964966_floppy_disk_save.png" />
+    <Resource Include="img\1492965060_insert-object.png" />
+    <Resource Include="img\1492965122_21_sharethis.png" />
+    <Resource Include="img\bar.jpg" />
+    <Resource Include="img\blankgraph.jpg" />
+    <Resource Include="img\calculator.jpg" />
+    <Resource Include="img\logo.jpg" />
+    <Resource Include="img\logo.png" />
+    <Resource Include="img\parabolagraph.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

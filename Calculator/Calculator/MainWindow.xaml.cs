@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
+using Microsoft.Win32;
+using System.Drawing;
 
 
 namespace Calculator
@@ -22,12 +25,13 @@ namespace Calculator
         string value1, value2, value3, valueHolder, memory, operation, buttonValue, equation;
         decimal x, y, z;
         string[] equationMemory = new string[100];
+        int calculatorIncrement = 2,
+            graphIncrement = 1,
+            scratchpadIncrement = 1;
 
         public MainWindow()
         {
             InitializeComponent();
-
-
         }
 
         public void InsertEquationMemory()
@@ -235,6 +239,16 @@ namespace Calculator
             this.Close();
         }
 
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            TextOutput();
+        }
+
+        private void OpenButton_Click(object sender, RoutedEventArgs e)
+        {
+            TextInput();
+        }
+
         private void MemorySelection_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             inputBox.Text = inputBox.Text + MemorySelection.SelectedValue + "\n\n";
@@ -243,26 +257,65 @@ namespace Calculator
         private void TabController_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             TabItem tab = new TabItem();
-            TextBox calculator = new TextBox();
 
             switch (Convert.ToString(TabController.SelectedValue))
             {
                 case "System.Windows.Controls.ComboBoxItem: Calculator":
-                    tab.Header = "Calculator";
-                    tab.Name = "Calculator";
+                    tab.Header = ("Calculator" + calculatorIncrement);
+                    tab.Name = ("Calculator" + calculatorIncrement);
+                    calculatorIncrement++;
                     TabsMenu.Items.Add(tab);
                     tab.Content = new TextBox();
                     break;
 
                 case "System.Windows.Controls.ComboBoxItem: Graph":
-                    tab.Header = "Graph";
-                    tab.Name = "Graph";
+                    tab.Header = ("Graph" + graphIncrement);
+                    tab.Name = ("Graph" + graphIncrement);
+                    graphIncrement++;
+                    tab.Content = Application.LoadComponent(new Uri("GraphLayout.xaml", UriKind.Relative));;
                     TabsMenu.Items.Add(tab);
-                    tab.Content = new Image();
                     break;
 
-
+                case "System.Windows.Controls.ComboBoxItem: Scratchpad":
+                    tab.Header = ("Scratchpad" + scratchpadIncrement);
+                    tab.Name = ("Scratchpad" + scratchpadIncrement);
+                    scratchpadIncrement++;
+                    tab.Content = Application.LoadComponent(new Uri("GraphLayout.xaml", UriKind.Relative));
+                    TabsMenu.Items.Add(tab);
+                    break;
             }
         }
+
+        public void TextOutput()
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.DefaultExt = "txt";
+            saveFileDialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+            saveFileDialog.ShowDialog();
+            File.WriteAllText(saveFileDialog.FileName, inputBox.Text);
+        }
+        
+        public void TextInput()
+        {
+            TabItem tab = new TabItem();
+
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.ShowDialog();
+            string fileName = openFileDialog.FileName;
+
+            StreamReader readText = new StreamReader(fileName);
+            String line = readText.ReadToEnd();
+
+            TextBox inputBox2 = new TextBox();
+            
+            tab.Header = ("Calculator" + calculatorIncrement);
+            tab.Content = inputBox2;
+            calculatorIncrement++;
+
+            TabsMenu.Items.Add(tab);
+            inputBox2.Text = line;
+            tab.IsSelected = true;
+            }
+            
     }
 }
