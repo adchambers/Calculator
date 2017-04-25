@@ -34,16 +34,12 @@
         </DockPanel>
 
         <WrapPanel Margin="310,35,0,0" VerticalAlignment="Top">
-            <TabControl Width="692" Margin="0" Height="664">
-                <TabItem Header="Calculator">
-                    <TextBox x:Name="InputBox" HorizontalAlignment="Center" Height="628" Margin="0,4,0,0" VerticalAlignment="Top" Width="682" VerticalScrollBarVisibility="Visible"/>
+            <TabControl x:Name="TabsMenu" Width="692" Margin="0" Height="664">
+                <TabItem x:Name="Calculator0" Header="Calculator">
+                    <TextBox x:Name="inputBox" HorizontalAlignment="Center" Height="628" Margin="0,4,0,0" VerticalAlignment="Top" Width="682" VerticalScrollBarVisibility="Visible"/>
                 </TabItem>
-
-                <TabItem Header="Graph" />
-                <TabItem Header="     " />
             </TabControl>
         </WrapPanel>
-
         <DockPanel Background="#FEE6E6E6" Margin="0,0,0,-714" Height="22">
             <Menu DockPanel.Dock="Bottom" HorizontalAlignment="Left" Width="1018" VerticalAlignment="Bottom" Height="22" >
                 <Menu.Background>
@@ -56,7 +52,6 @@
         </DockPanel>
 
         <Image Margin="12,125,714,41" Source="calculator.jpg" Stretch="Fill"/>
-        <StackPanel HorizontalAlignment="Left" Height="100" Margin="1085,0,-169,0" VerticalAlignment="Top" Width="100"/>
         <Button x:Name="SumButton" Content="+" HorizontalAlignment="Left" Margin="222,505,0,0" VerticalAlignment="Top"  Width="24" Height="18" HorizontalContentAlignment="Center"  Click="SumButton_Click" Style="{DynamicResource ButtonStyle1}"/>
         <Button x:Name="DifferenceButton" Content="-" HorizontalAlignment="Left" Margin="248,505,0,0" VerticalAlignment="Top"  Width="24" Height="18" HorizontalContentAlignment="Center"  Click="DifferenceButton_Click" Style="{DynamicResource ButtonStyle1}" FontSize="10"/>
         <Button x:Name="DivideButton" Content="/" HorizontalAlignment="Left" Margin="248,537,0,0" VerticalAlignment="Top"  Width="24" Height="18" HorizontalContentAlignment="Center"  Click="DivideButton_Click" Style="{DynamicResource ButtonStyle1}" FontSize="8"/>
@@ -130,7 +125,16 @@
         <Image Margin="116,43,873,666" Source="1492964966_floppy_disk_save.png" Stretch="Fill"/>
         <Image Margin="162,43,822,663" Source="1492965060_insert-object.png" Stretch="Fill"/>
         <Image Margin="214,43,770,663" Source="1492965122_21_sharethis.png" Stretch="Fill"/>
+        <ComboBox x:Name="TabController" Height="26" VerticalAlignment="Top" Margin="768,30,15.6,0" IsEditable="True" Text="Add Tab" SelectionChanged="TabController_SelectionChanged">
+            <ComboBoxItem>Calculator</ComboBoxItem>
+            <ComboBoxItem>Graph</ComboBoxItem>
+            <ComboBoxItem>3D Graph</ComboBoxItem>
+            <ComboBoxItem>Currency Converter</ComboBoxItem>
+            <ComboBoxItem>Scratchpad</ComboBoxItem>
+        </ComboBox>
 
     </Grid>
+
+
 
 </Window>

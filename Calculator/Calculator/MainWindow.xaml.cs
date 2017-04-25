@@ -12,7 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-//test
+
+
 namespace Calculator
 {
     public partial class MainWindow : Window
@@ -22,10 +23,11 @@ namespace Calculator
         decimal x, y, z;
         string[] equationMemory = new string[100];
 
-
         public MainWindow()
         {
             InitializeComponent();
+
+
         }
 
         public void InsertEquationMemory()
@@ -48,8 +50,8 @@ namespace Calculator
                     z = x + y;
                     z = Math.Round(z, 17);
                     value3 = Convert.ToString(z);
-                    InputBox.Text = (memory + value1 + " " + operation + " " + value2 + " = " + value3 + "\n\n");
-                    memory = InputBox.Text;
+                    inputBox.Text = (memory + value1 + " " + operation + " " + value2 + " = " + value3 + "\n\n");
+                    memory = inputBox.Text;
                     equation = (value1 + " " + operation + " " + value2 + " = " + value3);
                     break;
 
@@ -57,8 +59,8 @@ namespace Calculator
                     z = x - y;
                     z = Math.Round(z, 17);
                     value3 = Convert.ToString(z);
-                    InputBox.Text = (memory + value1 + " " + operation + " " + value2 + " = " + value3 + "\n\n");
-                    memory = InputBox.Text;
+                    inputBox.Text = (memory + value1 + " " + operation + " " + value2 + " = " + value3 + "\n\n");
+                    memory = inputBox.Text;
                     equation = (value1 + " " + operation + " " + value2 + " = " + value3);
                     break;
 
@@ -66,8 +68,8 @@ namespace Calculator
                     z = x * y;
                     z = Math.Round(z, 17);
                     value3 = Convert.ToString(z);
-                    InputBox.Text = (memory + value1 + " " + operation + " " + value2 + " = " + value3 + "\n\n");
-                    memory = InputBox.Text;
+                    inputBox.Text = (memory + value1 + " " + operation + " " + value2 + " = " + value3 + "\n\n");
+                    memory = inputBox.Text;
                     equation = (value1 + " " + operation + " " + value2 + " = " + value3);
                     break;
 
@@ -76,8 +78,8 @@ namespace Calculator
                     {
                         z = 0m;
                         value3 = Convert.ToString(z);
-                        InputBox.Text = (memory + value1 + " " + operation + " " + value2 + " = " + value3 + "\n\n");
-                        memory = InputBox.Text;
+                        inputBox.Text = (memory + value1 + " " + operation + " " + value2 + " = " + value3 + "\n\n");
+                        memory = inputBox.Text;
                         equation = (value1 + " " + operation + " " + value2 + " = " + value3);
                         break;
                     }
@@ -86,14 +88,11 @@ namespace Calculator
                         z = x / y;
                         z = Math.Round(z, 17);
                         value3 = Convert.ToString(z);
-                        InputBox.Text = (memory + value1 + " " + operation + " " + value2 + " = " + value3 + "\n\n");
-                        memory = InputBox.Text;
+                        inputBox.Text = (memory + value1 + " " + operation + " " + value2 + " = " + value3 + "\n\n");
+                        memory = inputBox.Text;
                         equation = (value1 + " " + operation + " " + value2 + " = " + value3);
                         break;
                     }
-                default:
-                    // Left blank intentionally
-                    break;
             }
             InsertEquationMemory();
             value1 = null;
@@ -107,8 +106,8 @@ namespace Calculator
         {
             value1 = null;
             value2 = null;
-            value3 = InputBox.Text;
-            InputBox.Text = "0";
+            value3 = inputBox.Text;
+            inputBox.Text = "0";
             x = 0;
         }
 
@@ -130,7 +129,7 @@ namespace Calculator
         {
             GatherValues();
             operation = "+";
-            InputBox.Text = (InputBox.Text + " " + operation + " ");
+            inputBox.Text = (inputBox.Text + " " + operation + " ");
         }
 
         private void DifferenceButton_Click(object sender, RoutedEventArgs e)
@@ -138,7 +137,7 @@ namespace Calculator
             {
                 GatherValues();
                 operation = "-";
-                InputBox.Text = (InputBox.Text + " " + operation + " ");
+                inputBox.Text = (inputBox.Text + " " + operation + " ");
             }
         }
 
@@ -147,7 +146,7 @@ namespace Calculator
             {
                 GatherValues();
                 operation = "*";
-                InputBox.Text = (InputBox.Text + " " + operation + " ");
+                inputBox.Text = (inputBox.Text + " " + operation + " ");
             }
         }
 
@@ -156,13 +155,13 @@ namespace Calculator
             {
                 GatherValues();
                 operation = "/";
-                InputBox.Text = (InputBox.Text + " " + operation + " ");
+                inputBox.Text = (inputBox.Text + " " + operation + " ");
             }
         }
 
         void InputValue()
         {
-            InputBox.Text = InputBox.Text + buttonValue;
+            inputBox.Text = inputBox.Text + buttonValue;
             valueHolder = valueHolder + buttonValue;
         }
 
@@ -238,11 +237,32 @@ namespace Calculator
 
         private void MemorySelection_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (MemorySelection.Text != "Equation History")
-            {
-                InputBox.Text = (InputBox.Text + MemorySelection.Text + "\n");
-            }
+            inputBox.Text = inputBox.Text + MemorySelection.SelectedValue + "\n\n";
+        }
 
+        private void TabController_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            TabItem tab = new TabItem();
+            TextBox calculator = new TextBox();
+
+            switch (Convert.ToString(TabController.SelectedValue))
+            {
+                case "System.Windows.Controls.ComboBoxItem: Calculator":
+                    tab.Header = "Calculator";
+                    tab.Name = "Calculator";
+                    TabsMenu.Items.Add(tab);
+                    tab.Content = new TextBox();
+                    break;
+
+                case "System.Windows.Controls.ComboBoxItem: Graph":
+                    tab.Header = "Graph";
+                    tab.Name = "Graph";
+                    TabsMenu.Items.Add(tab);
+                    tab.Content = new Image();
+                    break;
+
+
+            }
         }
     }
 }
