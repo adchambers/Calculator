@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:Calculator"
         xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero" x:Class="Calculator.MainWindow"
         mc:Ignorable="d"
-        Title="Calculator" Height="768" Width="1024" ResizeMode="NoResize" >
+        Title="Omni Calculator" Height="768" Width="1024" ResizeMode="NoResize"
+        Icon="/img/calculator.jpg">
 
     <Grid>
 
@@ -20,12 +21,16 @@
                     </LinearGradientBrush>
                 </Menu.Background>
                 <MenuItem Header="_File" Foreground="#FFBFBFBF">
-                    <MenuItem Header="_Open" Foreground="Black"/>
-                    <MenuItem Header="_Close" Foreground="Black"/>
-                    <MenuItem Header="_Save" Foreground="Black"/>
+                    <MenuItem x:Name="FileMenu_Open" Header="_Open" Foreground="Black" Click="FileMenu_Open_Click"/>
+                    <MenuItem x:Name="FileMenu_Save" Header="_Save" Foreground="Black" Click="FileMenu_Save_Click"/>
+                    <MenuItem x:Name="FileMenu_Close" Header="_Close" Foreground="Black" Click="FileMenu_Close_Click"/>
                 </MenuItem>
                 <MenuItem Header="_Tools" Foreground="#FFBFBFBF">
-                    <MenuItem Header="_Insert" Foreground="Black"/>
+                    <MenuItem Header="_Insert" Foreground="Black">
+                        <MenuItem x:Name="FileMenu_AddCalculator" Header="Add Calculator" HorizontalAlignment="Left" Click="FileMenu_AddCalculator_Click"/>
+                        <MenuItem x:Name="FileMenu_AddGraph" Header="Add Graph" HorizontalAlignment="Left" Click="FileMenu_AddGraph_Click"/>
+                        <MenuItem x:Name="FileMenu_AddScratchpad" Header="Add Scratchpad" HorizontalAlignment="Left" Click="FileMenu_AddScratchpad_Click"/>
+                    </MenuItem>
                 </MenuItem>
                 <MenuItem Header="_Help" Foreground="#FFBFBFBF">
                     <MenuItem Header="_About" Foreground="Black"/>
@@ -34,10 +39,16 @@
             <ComboBox x:Name="MemorySelection" Height="26" VerticalAlignment="Top" Width="238" Margin="0,-14,700,0" IsEditable="True" Text="Equation History" SelectionChanged="MemorySelection_SelectionChanged"/>
         </DockPanel>
 
+
+
+
+
+
+
         <WrapPanel Margin="310,35,0,0" VerticalAlignment="Top">
             <TabControl x:Name="TabsMenu" Width="692" Margin="0" Height="664">
                 <TabItem Header="Calculator">
-                    <TextBox x:Name="inputBox" HorizontalAlignment="Center" Height="628" Margin="0,4,0,0" VerticalAlignment="Top" Width="682" VerticalScrollBarVisibility="Visible"/>
+                    <TextBox x:Name="inputBox" HorizontalAlignment="Center" Margin="0,0,-0.4,-1" VerticalAlignment="Top" Width="686" Height="637" VerticalScrollBarVisibility="Visible"/>
                 </TabItem>
 
             </TabControl>
@@ -126,17 +137,16 @@
         <Image Margin="162,43,822,663" Source="/img/1492965060_insert-object.png" Stretch="Fill"/>
         <Image Margin="214,43,770,663" Source="/img/1492965122_21_sharethis.png" Stretch="Fill"/>
         <ComboBox x:Name="TabController" Height="26" VerticalAlignment="Top" Margin="768,30,15.6,0" IsEditable="True" Text="Add Tab" SelectionChanged="TabController_SelectionChanged">
-            <ComboBoxItem>Graph</ComboBoxItem>
-            <ComboBoxItem>3D Graph</ComboBoxItem>
-            <ComboBoxItem>Currency Converter</ComboBoxItem>
-            <ComboBoxItem>Scratchpad</ComboBoxItem>
+            <ComboBoxItem>Add Calculator</ComboBoxItem>
+            <ComboBoxItem>Add Graph</ComboBoxItem>
+            <ComboBoxItem>Add Scratchpad</ComboBoxItem>
         </ComboBox>
-        <Button x:Name="SaveButton" HorizontalAlignment="Left" Margin="116,43,0,0" VerticalAlignment="Top" Height="29" Width="29" Click="SaveButton_Click">
+        <Button x:Name="SaveButton" HorizontalAlignment="Left" Margin="116,43,0,0" VerticalAlignment="Top" Height="29" Width="29" Click="SaveButton_Click" Style="{DynamicResource ButtonStyle_Save}" BorderThickness="0">
             <Button.Background>
                 <ImageBrush ImageSource="img/1492964966_floppy_disk_save.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="OpenButton" HorizontalAlignment="Left" Margin="62,43,0,0" VerticalAlignment="Top" Height="29" Width="29" Style="{DynamicResource ButtonStyle_Save}" Click="OpenButton_Click">
+        <Button x:Name="OpenButton" HorizontalAlignment="Left" Margin="62,43,0,0" VerticalAlignment="Top" Height="29" Width="29" Style="{DynamicResource ButtonStyle_Save}" Click="OpenButton_Click" BorderThickness="0">
             <Button.Background>
                 <ImageBrush ImageSource="img/1492964945_document-open.png"/>
             </Button.Background>

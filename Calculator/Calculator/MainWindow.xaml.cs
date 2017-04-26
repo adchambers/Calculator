@@ -241,12 +241,43 @@ namespace Calculator
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            TextOutput();
+            SaveFile();
+        }
+
+        private void FileMenu_Save_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFile();
+        }
+
+
+        private void FileMenu_Close_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
 
         private void OpenButton_Click(object sender, RoutedEventArgs e)
         {
-            TextInput();
+            OpenFile();
+        }
+
+        private void FileMenu_Open_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFile();
+        }
+
+        private void FileMenu_AddCalculator_Click(object sender, RoutedEventArgs e)
+        {
+            NewCalculator();
+        }
+
+        private void FileMenu_AddScratchpad_Click(object sender, RoutedEventArgs e)
+        {
+            NewScratchpad();
+        }
+
+        private void FileMenu_AddGraph_Click(object sender, RoutedEventArgs e)
+        {
+            NewGraph();
         }
 
         private void MemorySelection_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -260,33 +291,51 @@ namespace Calculator
 
             switch (Convert.ToString(TabController.SelectedValue))
             {
-                case "System.Windows.Controls.ComboBoxItem: Calculator":
-                    tab.Header = ("Calculator" + calculatorIncrement);
-                    tab.Name = ("Calculator" + calculatorIncrement);
-                    calculatorIncrement++;
-                    TabsMenu.Items.Add(tab);
-                    tab.Content = new TextBox();
+                case "System.Windows.Controls.ComboBoxItem: Add Calculator":
+                    NewCalculator();
                     break;
 
-                case "System.Windows.Controls.ComboBoxItem: Graph":
-                    tab.Header = ("Graph" + graphIncrement);
-                    tab.Name = ("Graph" + graphIncrement);
-                    graphIncrement++;
-                    tab.Content = Application.LoadComponent(new Uri("GraphLayout.xaml", UriKind.Relative));;
-                    TabsMenu.Items.Add(tab);
+                case "System.Windows.Controls.ComboBoxItem: Add Graph":
+                    NewGraph();
                     break;
 
-                case "System.Windows.Controls.ComboBoxItem: Scratchpad":
-                    tab.Header = ("Scratchpad" + scratchpadIncrement);
-                    tab.Name = ("Scratchpad" + scratchpadIncrement);
-                    scratchpadIncrement++;
-                    tab.Content = Application.LoadComponent(new Uri("GraphLayout.xaml", UriKind.Relative));
-                    TabsMenu.Items.Add(tab);
+                case "System.Windows.Controls.ComboBoxItem: Add Scratchpad":
+                    NewScratchpad();
                     break;
             }
         }
 
-        public void TextOutput()
+        public void NewCalculator()
+        {
+            TabItem tab = new TabItem();
+            tab.Header = ("Calculator" + calculatorIncrement);
+            tab.Name = ("Calculator" + calculatorIncrement);
+            calculatorIncrement++;
+            TabsMenu.Items.Add(tab);
+            tab.Content = new TextBox();
+        }
+
+        public void NewGraph()
+        {
+            TabItem tab = new TabItem();
+            tab.Header = ("Graph" + graphIncrement);
+            tab.Name = ("Graph" + graphIncrement);
+            graphIncrement++;
+            tab.Content = Application.LoadComponent(new Uri("GraphLayout.xaml", UriKind.Relative)); ;
+            TabsMenu.Items.Add(tab);
+        }
+
+        public void NewScratchpad()
+        {
+            TabItem tab = new TabItem();
+            tab.Header = ("Scratchpad" + scratchpadIncrement);
+            tab.Name = ("Scratchpad" + scratchpadIncrement);
+            scratchpadIncrement++;
+            tab.Content = Application.LoadComponent(new Uri("GraphLayout.xaml", UriKind.Relative));
+            TabsMenu.Items.Add(tab);
+        }
+
+        public void SaveFile()
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.DefaultExt = "txt";
@@ -295,27 +344,25 @@ namespace Calculator
             File.WriteAllText(saveFileDialog.FileName, inputBox.Text);
         }
         
-        public void TextInput()
+        public void OpenFile()
         {
             TabItem tab = new TabItem();
-
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.ShowDialog();
             string fileName = openFileDialog.FileName;
 
-            StreamReader readText = new StreamReader(fileName);
-            String line = readText.ReadToEnd();
-
-            TextBox inputBox2 = new TextBox();
-            
-            tab.Header = ("Calculator" + calculatorIncrement);
-            tab.Content = inputBox2;
-            calculatorIncrement++;
-
-            TabsMenu.Items.Add(tab);
-            inputBox2.Text = line;
-            tab.IsSelected = true;
+            if (File.Exists(fileName))
+            {
+                StreamReader readText = new StreamReader(fileName);
+                String line = readText.ReadToEnd();
+                TextBox inputBox2 = new TextBox();
+                tab.Header = ("Calculator" + calculatorIncrement);
+                tab.Content = inputBox2;
+                calculatorIncrement++;
+                TabsMenu.Items.Add(tab);
+                inputBox2.Text = line;
+                tab.IsSelected = true;
             }
-            
+        }
     }
 }
