@@ -22,18 +22,13 @@ namespace Calculator
             InitializeComponent();
         }
 
-        /* 
-         * For each click of a numbered button or decimal, a string named buttonValue is changed to its corresponding string value
-         * 
-         * Thereafter, a function named InputValue is used to store each number to a string named valueHolder
-         * 
-         * Later the collection of string values (e.g. 123.45) is converted to its decimal equivalent
-        */
-
         private void ZeroButton_Click(object sender, RoutedEventArgs e)
         {
+            // For each click of a numbered button or decimal, a string named buttonValue is changed to its corresponding string value
             buttonValue = "0";
+            // A function named InputValue is used to store each number to a string named valueHolder
             InputValue();
+            //Later the collection of these string values (e.g. 123.45) is converted to its decimal equivalent
         }
 
         private void OneButton_Click(object sender, RoutedEventArgs e)
@@ -148,16 +143,13 @@ namespace Calculator
         {
             NewGraph();
         }
-        
-        /* 
-         * Each operator uses an if loop to check whether an operator is allowed. For instance, if the user has not specific their first value, and instead simply clicks the "+" operator, no event occurs (else)
-         * 
-         * On the other han, if value1 is null, calling an operator is allowed.  The operator is assigned to a string named operation
-         * 
-         * Our calculator does not currently support more than two values, thereforeclicking an operator after inputting a value for value2 defaults to else
-         */
+
+
+        // Each operator uses an if loop to check whether an operator is allowed. For instance, if the user has not specific their first value, and instead simply clicks the "+" operator, no event occurs (else)
         private void SumButton_Click(object sender, RoutedEventArgs e)
         {
+        
+        // On the other hand, if value1 is null, calling an operator is allowed
             if (value1 == null)
             {
                 if (valueHolder != String.Empty)
@@ -167,6 +159,7 @@ namespace Calculator
                     inputBox.Text = (inputBox.Text + " " + operation + " ");
                     UpdateCalculatorScreen();
                 }
+                // Our calculator does not currently support more than two values, thereforeclicking an operator after inputting a value for value2 defaults to else
             }
         }
 
