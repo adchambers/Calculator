@@ -46,8 +46,8 @@
 
 
         <WrapPanel Margin="310,35,0,0" VerticalAlignment="Top">
-            <TabControl x:Name="TabsMenu" Width="692" Margin="0" Height="664">
-                <TabItem Header="Calculator">
+            <TabControl x:Name="TabsMenu" Width="692" Margin="0" Height="664" SelectionChanged="TabsMenu_SelectionChanged">
+                <TabItem x:Name="CalculatorTab" Header="Calculator">
                     <TextBox x:Name="inputBox" HorizontalAlignment="Center" Margin="0,0,-0.4,-1" VerticalAlignment="Top" Width="686" Height="637" VerticalScrollBarVisibility="Visible"/>
                 </TabItem>
 
@@ -69,7 +69,7 @@
         <Button x:Name="DifferenceButton" Content="-" HorizontalAlignment="Left" Margin="248,505,0,0" VerticalAlignment="Top"  Width="24" Height="18" HorizontalContentAlignment="Center"  Click="DifferenceButton_Click" Style="{DynamicResource ButtonStyle1}" FontSize="10"/>
         <Button x:Name="DivideButton" Content="/" HorizontalAlignment="Left" Margin="248,537,0,0" VerticalAlignment="Top"  Width="24" Height="18" HorizontalContentAlignment="Center"  Click="DivideButton_Click" Style="{DynamicResource ButtonStyle1}" FontSize="8"/>
         <Button x:Name="EqualsButton" Content="=" HorizontalAlignment="Left" Margin="222,597,0,0" VerticalAlignment="Top"  Width="50" Height="18" HorizontalContentAlignment="Center"  Click="EqualsButton_Click" Style="{DynamicResource ButtonStyle1}" FontSize="10"/>
-        <Button x:Name="ClearButton" Content="clr" HorizontalAlignment="Left" Margin="62,505,0,0" VerticalAlignment="Top"  Width="24" Height="18" HorizontalContentAlignment="Center"  Click="ClearButton_Click" Style="{DynamicResource ButtonStyle1}" FontSize="8"/>
+        <Button x:Name="ClearButton" Content="Clr" HorizontalAlignment="Left" Margin="248,567,0,0" VerticalAlignment="Top"  Width="24" Height="18" HorizontalContentAlignment="Center"  Click="ClearButton_Click" Style="{DynamicResource ButtonStyle1}" FontSize="8"/>
         <Button x:Name="MultiplyButton" Content="*" HorizontalAlignment="Left" Margin="222,537,0,0" VerticalAlignment="Top" Width="24" Height="18" HorizontalContentAlignment="Center"  Click="MultiplyButton_Click" Style="{DynamicResource ButtonStyle1}" FontSize="10"/>
         <Button x:Name="OneButton"  Content="1" HorizontalAlignment="Left" Margin="90,563,0,0" VerticalAlignment="Top"  Width="40" Height="26" HorizontalContentAlignment="Center"  Click="OneButton_Click" Style="{DynamicResource NumberButtonStyle}" FontWeight="Bold"/>
         <Button x:Name="TwoButton"  Content="2" HorizontalAlignment="Left" Margin="134,563,0,0" VerticalAlignment="Top"  Width="40" Height="26" HorizontalContentAlignment="Center"  Click="TwoButton_Click" Style="{DynamicResource NumberButtonStyle}" FontWeight="Bold"/>
@@ -90,7 +90,7 @@
         <Button x:Name="VariableButton" Content="var" HorizontalAlignment="Left" Margin="34,535,0,0" VerticalAlignment="Top" Width="24" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle1}" FontSize="8"/>
         <TextBlock HorizontalAlignment="Left" Margin="76,539,0,0" TextWrapping="Wrap" Text="2" VerticalAlignment="Top" Foreground="Black" FontSize="6"/>
         <Button x:Name="TrigButton" Content="trig" HorizontalAlignment="Left" Margin="62,567,0,0" VerticalAlignment="Top" Width="24" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle1}" FontSize="8"/>
-        <Button x:Name="UnnamedButton" Content="" HorizontalAlignment="Left" Margin="250,567,0,0" VerticalAlignment="Top"  Width="24" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle1}" FontSize="10"/>
+        <Button x:Name="UnnamedButton" Content="" HorizontalAlignment="Left" Margin="62,505,0,0" VerticalAlignment="Top"  Width="24" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle1}" FontSize="10"/>
         <Button x:Name="DeleteButton" Content="Del" HorizontalAlignment="Left" Margin="222,567,0,0" VerticalAlignment="Top" Width="24" Height="18" HorizontalContentAlignment="Center"  Click="MultiplyButton_Click" Style="{DynamicResource ButtonStyle1}" FontSize="8"/>
         <Button x:Name="AButton" Content="a" HorizontalAlignment="Left" Margin="54,377,0,0" VerticalAlignment="Top"  Width="18" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle2}" FontSize="8"/>
         <Button x:Name="BButton" Content="b" HorizontalAlignment="Left" Margin="78,377,0,0" VerticalAlignment="Top"  Width="18" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle2}" FontSize="8"/>
@@ -130,7 +130,6 @@
         <TextBlock HorizontalAlignment="Left" Margin="70,555,0,0" TextWrapping="Wrap" Text="ln" VerticalAlignment="Top" Foreground="#FF93DFFF" FontSize="8" FontWeight="Bold"/>
         <TextBlock HorizontalAlignment="Left" Margin="224,493,0,0" TextWrapping="Wrap" Text="+tab" VerticalAlignment="Top" Foreground="#FF93DFFF" FontSize="8" FontWeight="Bold"/>
         <TextBlock HorizontalAlignment="Left" Margin="252,524,0,0" TextWrapping="Wrap" Text="x / y" VerticalAlignment="Top" Foreground="#FF93DFFF" FontSize="8" FontWeight="Bold" FontStyle="Italic"/>
-        <TextBlock HorizontalAlignment="Left" Margin="225,555,0,0" TextWrapping="Wrap" Text="Clear" VerticalAlignment="Top" Foreground="#FF93DFFF" FontSize="8" FontWeight="Bold"/>
         <TextBlock HorizontalAlignment="Left" Margin="230,525,0,0" TextWrapping="Wrap" Text="π" VerticalAlignment="Top" Foreground="#FF93DFFF" FontSize="8" FontWeight="Bold"/>
         <TextBlock HorizontalAlignment="Left" Margin="244,587,0,0" TextWrapping="Wrap" Text="~" VerticalAlignment="Top" Foreground="#FF93DFFF" FontSize="10" FontWeight="Bold"/>
         <TextBlock HorizontalAlignment="Left" Margin="244,583,0,0" TextWrapping="Wrap" Text="~" VerticalAlignment="Top" Foreground="#FF93DFFF" FontSize="10" FontWeight="Bold"/>
@@ -151,6 +150,7 @@
                 <ImageBrush ImageSource="img/1492964945_document-open.png"/>
             </Button.Background>
         </Button>
+        <TextBox x:Name="calculatorInputBox" HorizontalAlignment="Left" Height="165" Margin="50,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" BorderThickness="0" VerticalScrollBarVisibility="Visible"/>
 
 
     </Grid>

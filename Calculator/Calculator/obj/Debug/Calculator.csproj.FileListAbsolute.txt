@@ -45,3 +45,5 @@ C:\Users\Adam\Dropbox\Projects\C#\Calculator\Calculator\Calculator\obj\Debug\Cal
 C:\Users\Adam\Dropbox\Projects\C#\Calculator\Calculator\Calculator\obj\Debug\Calculator.csproj.GenerateResource.Cache
 D:\Dropbox\Projects\C#\Calculator\Calculator\Calculator\obj\Debug\GraphLayout.g.cs
 D:\Dropbox\Projects\C#\Calculator\Calculator\Calculator\obj\Debug\GraphLayout.baml
+C:\Users\Adam\Dropbox\Projects\C#\Calculator\Calculator\Calculator\obj\Debug\GraphLayout.g.cs
+C:\Users\Adam\Dropbox\Projects\C#\Calculator\Calculator\Calculator\obj\Debug\GraphLayout.baml

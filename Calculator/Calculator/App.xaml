@@ -6,17 +6,6 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
 
-
-
-        
-
-
-
-
-
-
-
-
         <Style x:Key="ButtonFocusVisual">
             <Setter Property="Control.Template">
                 <Setter.Value>

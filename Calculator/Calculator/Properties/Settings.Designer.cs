@@ -19,7 +19,7 @@ namespace Calculator.Properties
 
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
 
-        public static Settings Default
+        private static Settings Default
         {
             get
             {
