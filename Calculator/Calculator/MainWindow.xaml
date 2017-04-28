@@ -65,8 +65,8 @@
         </DockPanel>
 
         <Image Margin="12,125,714,41" Source="/img/calculator.jpg" Stretch="Fill"/>
-        <Button x:Name="SumButton" Content="+" HorizontalAlignment="Left" Margin="222,505,0,0" VerticalAlignment="Top"  Width="24" Height="18" HorizontalContentAlignment="Center"  Click="SumButton_Click" Style="{DynamicResource ButtonStyle1}"/>
-        <Button x:Name="DifferenceButton" Content="-" HorizontalAlignment="Left" Margin="248,505,0,0" VerticalAlignment="Top"  Width="24" Height="18" HorizontalContentAlignment="Center"  Click="DifferenceButton_Click" Style="{DynamicResource ButtonStyle1}" FontSize="10"/>
+        <Button x:Name="AddButton" Content="+" HorizontalAlignment="Left" Margin="222,505,0,0" VerticalAlignment="Top"  Width="24" Height="18" HorizontalContentAlignment="Center"  Click="AddButton_Click" Style="{DynamicResource ButtonStyle1}"/>
+        <Button x:Name="SubtractButton" Content="-" HorizontalAlignment="Left" Margin="248,505,0,0" VerticalAlignment="Top"  Width="24" Height="18" HorizontalContentAlignment="Center"  Click="SubtractButton_Click" Style="{DynamicResource ButtonStyle1}" FontSize="10"/>
         <Button x:Name="DivideButton" Content="/" HorizontalAlignment="Left" Margin="248,537,0,0" VerticalAlignment="Top"  Width="24" Height="18" HorizontalContentAlignment="Center"  Click="DivideButton_Click" Style="{DynamicResource ButtonStyle1}" FontSize="8"/>
         <Button x:Name="EqualsButton" Content="=" HorizontalAlignment="Left" Margin="222,597,0,0" VerticalAlignment="Top"  Width="50" Height="18" HorizontalContentAlignment="Center"  Click="EqualsButton_Click" Style="{DynamicResource ButtonStyle1}" FontSize="10"/>
         <Button x:Name="ClearButton" Content="Clr" HorizontalAlignment="Left" Margin="248,567,0,0" VerticalAlignment="Top"  Width="24" Height="18" HorizontalContentAlignment="Center"  Click="ClearButton_Click" Style="{DynamicResource ButtonStyle1}" FontSize="8"/>
@@ -83,7 +83,7 @@
         <Button x:Name="NineButton" Content="9" HorizontalAlignment="Left" Margin="178,501,0,0" VerticalAlignment="Top"  Width="40" Height="26" HorizontalContentAlignment="Center" Click="NineButton_Click" Style="{DynamicResource NumberButtonStyle}" FontWeight="Bold"/>
         <Button x:Name="DecimalButton" Content="." HorizontalAlignment="Left" Margin="134,593,0,0" VerticalAlignment="Top"  Width="40" Height="26" HorizontalContentAlignment="Center" Click="DecimalButton_Click" Style="{DynamicResource NumberButtonStyle}" FontWeight="Bold"/>
 
-        <Button x:Name="NegativeButton" Content="(-)" HorizontalAlignment="Left" Margin="178,593,0,0" VerticalAlignment="Top"  Width="40" Height="26" HorizontalContentAlignment="Center" Style="{DynamicResource NumberButtonStyle}" FontWeight="Bold"/>
+        <Button x:Name="NegativeButton" Content="(-)" HorizontalAlignment="Left" Margin="178,593,0,0" VerticalAlignment="Top"  Width="40" Height="26" HorizontalContentAlignment="Center" Style="{DynamicResource NumberButtonStyle}" FontWeight="Bold" Click="NegativeButton_Click"/>
         <Button x:Name="EnterButton" Content="Enter" HorizontalAlignment="Left" Margin="34,597,0,0" VerticalAlignment="Top"  Width="52" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle1}" FontSize="10"/>
         <Button x:Name="ParenthesisButton" Content="( )" HorizontalAlignment="Left" Margin="34,505,0,0" VerticalAlignment="Top"  Width="24" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle1}" FontSize="10"/>
         <Button x:Name="ExponentButton" Content="x " HorizontalAlignment="Left" Margin="62,535,0,0" VerticalAlignment="Top"  Width="24" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle1}" FontSize="10"/>

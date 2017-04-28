@@ -9,13 +9,14 @@ namespace Calculator
     public partial class MainWindow : Window
     {
 
-        string value1, value2, value3, valueHolder, memory, operation, buttonValue, equation;
+        string stringX, stringY, stringZ, valueHolder, memory, operation, buttonValue, equation, negativeSignX, negativeSignY;
         decimal x, y, z;
         string[] equationMemory = new string[100];
         int calculatorIncrement = 2,
             graphIncrement = 1,
             scratchpadIncrement = 1,
             index;
+        bool negativeX, negativeY;
 
         public MainWindow()
         {
@@ -90,6 +91,31 @@ namespace Calculator
             InputValue();
         }
 
+        private void NegativeButton_Click(object sender, RoutedEventArgs e)
+        {
+            // An if loop is used to determine which value (stringX or stringY) warrants the negative sign
+            if (stringX == null)
+            {
+                // A boolean is used so the value can be multiplied by -1 (if true) when the equals button is clicked
+                negativeX = true;
+                // Rewrites the inputBox.Text and adds a negative sign to the displayed value
+                inputBox.Text = (memory + "-" + valueHolder);
+                // Used for displaying the equation within inputBox
+                negativeSignX = "-";
+            }
+            // Same as above
+            else if (stringY == null)
+            {
+                if (valueHolder != null)
+                {
+                    negativeY = true;
+                    inputBox.Text = (memory + negativeSignX + stringX + " " + operation + " -" + valueHolder);
+                    negativeSignY = "-";
+                }
+            }
+
+        }
+
         // Used to close the application         
         private void ExitMenuItem_Click(object sender, RoutedEventArgs e)
         {
@@ -146,11 +172,11 @@ namespace Calculator
 
 
         // Each operator uses an if loop to check whether an operator is allowed. For instance, if the user has not specific their first value, and instead simply clicks the "+" operator, no event occurs (else)
-        private void SumButton_Click(object sender, RoutedEventArgs e)
+        private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-        
-        // On the other hand, if value1 is null, calling an operator is allowed
-            if (value1 == null)
+
+            // On the other hand, if stringX is null, calling an operator is allowed
+            if (stringX == null)
             {
                 if (valueHolder != String.Empty)
                 {
@@ -159,13 +185,13 @@ namespace Calculator
                     inputBox.Text = (inputBox.Text + " " + operation + " ");
                     UpdateCalculatorScreen();
                 }
-                // Our calculator does not currently support more than two values, thereforeclicking an operator after inputting a value for value2 defaults to else
+                // Our calculator does not currently support more than two values, thereforeclicking an operator after inputting a value for stringY defaults to else
             }
         }
 
-        private void DifferenceButton_Click(object sender, RoutedEventArgs e)
+        private void SubtractButton_Click(object sender, RoutedEventArgs e)
         {
-            if (value1 == null)
+            if (stringX == null)
             {
                 if (valueHolder != String.Empty)
                 {
@@ -179,7 +205,7 @@ namespace Calculator
 
         private void MultiplyButton_Click(object sender, RoutedEventArgs e)
         {
-            if (value1 == null)
+            if (stringX == null)
             {
                 if (valueHolder != String.Empty)
                 {
@@ -193,7 +219,7 @@ namespace Calculator
 
         private void DivideButton_Click(object sender, RoutedEventArgs e)
         {
-            if (value1 == null)
+            if (stringX == null)
             {
                 if (valueHolder != String.Empty)
                 {
@@ -207,30 +233,46 @@ namespace Calculator
         // Clears all stored values, including those displayed for UI purposes
         private void ClearButton_Click(object sender, RoutedEventArgs e)
         {
-            value1 = null;
-            value2 = null;
-            value3 = inputBox.Text;
+            stringX = null;
+            stringY = null;
+            stringZ = inputBox.Text;
             inputBox.Text = String.Empty;
             calculatorInputBox.Text = inputBox.Text;
             Array.Clear(equationMemory, 0, equationMemory.Length);
             MemorySelection.Items.Clear();
             memory = String.Empty;
+            negativeX = false;
+            negativeY = false;
+            negativeSignX = null;
+            negativeSignY = null;
         }
 
         private void EqualsButton_Click(object sender, RoutedEventArgs e)
         {
-            if (value1 != null)
+
+            if (stringX != null)
             {
-                // If value1 is not null, check to ensure valueHolder contains a string for value2
+                // If stringX is not null, check to ensure valueHolder contains a string for stringY
                 if (valueHolder != null)
                 {
+                    stringY = valueHolder;
+
+                    //Each string (stringX and stringY) are then converted to their decimal equivalent
+                    x = Convert.ToDecimal(stringX);
+                    y = Convert.ToDecimal(stringY);
+
+                    // If the negativeX boolean is true, the value of decimal x is multiplied by -1
+                    if (negativeX == true)
+                    {
+                        x = x * (-1);
+                    }
+
+                    // Same as negativeX
+                    if (negativeY == true)
+                    {
+                        y = y * (-1);
+                    }
                     
-                    value2 = valueHolder;
-
-                    //Each string (value1 and value2) are then converted to their decimal equivalent
-                    x = Convert.ToDecimal(value1);
-                    y = Convert.ToDecimal(value2);
-
                     // If both conditions are met, a switch is used to determine which operation should be performed on the two values
                     switch (operation)
                     {
@@ -241,63 +283,69 @@ namespace Calculator
                             // Z is rounded to 17 numbers.  This is useful to avoid issues of displaying repeating number (i.e. 1 divided by 3 equals 1.3333333...).  The entire display would be filled with 3s!
                             z = Math.Round(z, 17);
                             // Z is then converted to a string to be displayed in a textbox
-                            value3 = Convert.ToString(z);
+                            stringZ = Convert.ToString(z);
                             // A string to hold the current and previous text with the text box (inputBox) is displayed
-                            inputBox.Text = (memory + value1 + " " + operation + " " + value2 + " = " + value3 + "\n");
+                            inputBox.Text = (memory + negativeSignX + stringX + " " + operation + " " + negativeSignY + stringY + " = " + stringZ + "\n");
                             memory = inputBox.Text;
-                            // The resulting equation is stored in a string named equation, where it is stored to a drop-down box (MemorySelected) after this switch
-                            equation = (value1 + " " + operation + " " + value2 + " = " + value3);
+                            // The resulting equation is stored in a string named equation, where it is stored to a drop-down box (MemorySelection) after this switch
+                            equation = (negativeSignX + stringX + " " + operation + " " + negativeSignY + stringY + " = " + stringZ);
                             break;
 
                         case "-":
                             z = x - y;
                             z = Math.Round(z, 17);
-                            value3 = Convert.ToString(z);
-                            inputBox.Text = (memory + value1 + " " + operation + " " + value2 + " = " + value3 + "\n");
+                            stringZ = Convert.ToString(z);
+                            inputBox.Text = (memory + negativeSignX + stringX + " " + operation + " " + negativeSignY + stringY + " = " + stringZ + "\n");
                             memory = inputBox.Text;
-                            equation = (value1 + " " + operation + " " + value2 + " = " + value3);
+                            equation = (negativeSignX + stringX + " " + operation + " " + negativeSignY + stringY + " = " + stringZ);
                             break;
 
                         case "*":
                             z = x * y;
                             z = Math.Round(z, 17);
-                            value3 = Convert.ToString(z);
-                            inputBox.Text = (memory + value1 + " " + operation + " " + value2 + " = " + value3 + "\n");
+                            stringZ = Convert.ToString(z);
+                            inputBox.Text = (memory + negativeSignX + stringX + " " + operation + " " + negativeSignY + stringY + " = " + stringZ + "\n");
                             memory = inputBox.Text;
-                            equation = (value1 + " " + operation + " " + value2 + " = " + value3);
+                            equation = (negativeSignX + stringX + " " + operation + " " + negativeSignY + stringY + " = " + stringZ);
                             break;
 
                         case "/":
-                            // In the case of division, an additional if-loop checks both values (value1 (x) and value2 (y)) to see if either equals 0. If so, the answer is automatically 0
+                            // In the case of division, an additional if-loop checks both values (stringX (x) and stringY (y)) to see if either equals 0. If so, the answer is automatically 0
                             if (x == 0m || y == 0m)
                             {
                                 z = 0m;
-                                value3 = Convert.ToString(z);
-                                inputBox.Text = (memory + value1 + " " + operation + " " + value2 + " = " + value3 + "\n");
+                                stringZ = Convert.ToString(z);
+                                inputBox.Text = (memory + negativeSignX + stringX + " " + operation + " " + negativeSignY + stringY + " = " + stringZ + "\n");
                                 memory = inputBox.Text;
-                                equation = (value1 + " " + operation + " " + value2 + " = " + value3);
+                                equation = (negativeSignX + stringX + " " + operation + " " + negativeSignY + stringY + " = " + stringZ);
                                 break;
                             }
                             else
                             {
                                 z = x / y;
                                 z = Math.Round(z, 17);
-                                value3 = Convert.ToString(z);
-                                inputBox.Text = (memory + value1 + " " + operation + " " + value2 + " = " + value3 + "\n");
+                                stringZ = Convert.ToString(z);
+                                inputBox.Text = (memory + negativeSignX + stringX + " " + operation + " " + negativeSignY + stringY + " = " + stringZ + "\n");
                                 memory = inputBox.Text;
-                                equation = (value1 + " " + operation + " " + value2 + " = " + value3);
+                                equation = (negativeSignX + stringX + " " + operation + " " + negativeSignY + stringY + " = " + stringZ);
                                 break;
                             }
                     }
+
                     UpdateCalculatorScreen();
                     // String equation is stored to a drop-down box to be recalled later if the user chooses
                     InsertEquationToMemory();
                     // Finally values are cleared to perform a new operation
-                    value1 = null;
-                    value2 = null;
-                    value3 = null;
+                    stringX = null;
+                    stringY = null;
+                    stringZ = null;
                     valueHolder = String.Empty;
                     equation = String.Empty;
+                    // Negative boolean for X and Y values are reset to false for next equation
+                    negativeX = false;
+                    negativeY = false;
+                    negativeSignX = null;
+                    negativeSignY = null;
                 }
             }
         }
@@ -360,14 +408,15 @@ namespace Calculator
         public void InsertEquationToMemory()
         {
             index = Array.IndexOf(equationMemory, null);
-            equationMemory[index] = (value1 + " " + operation + " " + value2 + " = " + value3);
+            equationMemory[index] = equation;
             // The first equation is stored at equationMemory[0] and is incremented by 1 to store additional equations each time the equals button is clicked
             MemorySelection.Items.Insert(index++, equation);
         }
 
-         // A function named InputValue is used to capture each number when its corresponding button is clicked
+        // A function named InputValue is used to capture each number when its corresponding button is clicked
         void InputValue()
         {
+
             inputBox.Text = inputBox.Text + buttonValue;
             // A string named valueHolder stores each successive input by the user
             valueHolder = valueHolder + buttonValue;
@@ -375,20 +424,19 @@ namespace Calculator
             UpdateCalculatorScreen();
         }
 
-
         //An additional function is used to gather the value stored in valueHolder
         void GatherValues()
         {
 
-            //When the user clicks an operator (+, -, *, or /) the string value contained in valueHolder is assigned to either a string named value1 (if it is null) or value2 (if value 1 is NOT null)
-            if (value1 == null)
-            {
-                value1 = valueHolder;
+            //When the user clicks an operator (+, -, *, or /) the string value contained in valueHolder is assigned to either a string named stringX (if it is null) or stringY (if stringX is NOT null)
+            if (stringX == null)
+            { 
+                stringX = valueHolder;
                 valueHolder = null;
             }
             else
             {
-                value2 = valueHolder;
+                stringY = valueHolder;
                 valueHolder = null;
             }
         }
