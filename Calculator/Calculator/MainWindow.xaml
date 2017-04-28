@@ -90,7 +90,7 @@
         <Button x:Name="VariableButton" Content="var" HorizontalAlignment="Left" Margin="34,535,0,0" VerticalAlignment="Top" Width="24" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle1}" FontSize="8"/>
         <TextBlock HorizontalAlignment="Left" Margin="76,539,0,0" TextWrapping="Wrap" Text="2" VerticalAlignment="Top" Foreground="Black" FontSize="6"/>
         <Button x:Name="TrigButton" Content="trig" HorizontalAlignment="Left" Margin="62,567,0,0" VerticalAlignment="Top" Width="24" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle1}" FontSize="8"/>
-        <Button x:Name="UnnamedButton" Content="" HorizontalAlignment="Left" Margin="62,505,0,0" VerticalAlignment="Top"  Width="24" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle1}" FontSize="10"/>
+        <Button x:Name="CarrotButton" Content="^" HorizontalAlignment="Left" Margin="62,505,0,0" VerticalAlignment="Top"  Width="24" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle1}" FontSize="10" Click="CarrotButton_Click"/>
         <Button x:Name="DeleteButton" Content="Del" HorizontalAlignment="Left" Margin="222,567,0,0" VerticalAlignment="Top" Width="24" Height="18" HorizontalContentAlignment="Center"  Click="MultiplyButton_Click" Style="{DynamicResource ButtonStyle1}" FontSize="8"/>
         <Button x:Name="AButton" Content="a" HorizontalAlignment="Left" Margin="54,377,0,0" VerticalAlignment="Top"  Width="18" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle2}" FontSize="8"/>
         <Button x:Name="BButton" Content="b" HorizontalAlignment="Left" Margin="78,377,0,0" VerticalAlignment="Top"  Width="18" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle2}" FontSize="8"/>
@@ -115,7 +115,7 @@
         <Button x:Name="UButton" Content="u" HorizontalAlignment="Left" Margin="158,425,0,0" VerticalAlignment="Top"  Width="18" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle2}" FontSize="8"/>
         <Button x:Name="VButton" Content="v" HorizontalAlignment="Left" Margin="184,425,0,0" VerticalAlignment="Top"  Width="18" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle2}" FontSize="8"/>
         <Button x:Name="WButton" Content="w" HorizontalAlignment="Left" Margin="210,425,0,0" VerticalAlignment="Top"  Width="18" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle2}" FontSize="8"/>
-        <Button x:Name="XBUtton" Content="x" HorizontalAlignment="Left" Margin="238,425,0,0" VerticalAlignment="Top"  Width="18" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle2}" FontSize="8"/>
+        <Button x:Name="XBUtton" Content="x" HorizontalAlignment="Left" Margin="238,425,0,0" VerticalAlignment="Top"  Width="18" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle2}" FontSize="8" Click="XBUtton_Click"/>
         <Button x:Name="YButton" Content="y" HorizontalAlignment="Left" Margin="104,449,0,0" VerticalAlignment="Top"  Width="18" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle2}" FontSize="8"/>
         <Button x:Name="ZButton" Content="z" HorizontalAlignment="Left" Margin="132,449,0,0" VerticalAlignment="Top"  Width="18" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle2}" FontSize="8"/>
         <Button x:Name="LeftButton" Content="Back" HorizontalAlignment="Left" Margin="54,449,0,0" VerticalAlignment="Top"  Width="42" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle2}" FontSize="8"/>
@@ -151,7 +151,5 @@
             </Button.Background>
         </Button>
         <TextBox x:Name="calculatorInputBox" HorizontalAlignment="Left" Height="165" Margin="50,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" BorderThickness="0" VerticalScrollBarVisibility="Visible"/>
-
-
     </Grid>
 </Window>

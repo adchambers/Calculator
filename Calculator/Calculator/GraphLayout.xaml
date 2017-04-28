@@ -7,6 +7,28 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <Image x:Name="GraphImage" Margin="0,0,0,0" Source="/img/blankgraph.jpg"/>
+        <Image x:Name="GraphImage" Margin="0,0,0,0" Source="img/blankgraph.jpg"/>
+        <WrapPanel HorizontalAlignment="Left" Height="133" Margin="5,5,0,0" VerticalAlignment="Top" Width="149" Background="#FEE6E6E6">
+            <GridSplitter Height="5" Width="149" Background="#e6e6e6"/>
+            <GridSplitter Height="23" Width="5" Background="#e6e6e6"/>
+            <Label Content="f1: " Padding="5,5,5,5"/>
+            <TextBox x:Name="function1TextBox" Width="112"/>
+            <GridSplitter Height="5" Width="149" Background="#e6e6e6"/>
+            <GridSplitter Height="23" Width="5" Background="#e6e6e6"/>
+            <Label Content="f2: " Padding="5,5,5,5"/>
+            <TextBox x:Name="function2TextBox" Width="112"/>
+            <GridSplitter Height="5" Width="149" Background="#e6e6e6"/>
+            <GridSplitter Height="23" Width="5" Background="#e6e6e6"/>
+            <Label Content="f3: " Padding="5,5,5,5"/>
+            <TextBox x:Name="function3TextBox" Width="112"/>
+            <GridSplitter Height="5" Width="149" Background="#e6e6e6"/>
+
+            <GridSplitter Height="23" Width="10" Background="#e6e6e6"/>
+            <Button Content="Clear" Width="60" HorizontalAlignment="Right" HorizontalContentAlignment="Center" Height="20" Click="Button_Click"/>
+            <GridSplitter Height="23" Width="9" Background="#e6e6e6"/>
+            <Button Content="Graph" Width="60" HorizontalAlignment="Right" HorizontalContentAlignment="Center" Height="20" Click="Button_Click_1"/>
+            <GridSplitter Height="23" Width="10" Background="#e6e6e6"/>
+            <GridSplitter Height="5" Width="149" Background="#e6e6e6"/>
+        </WrapPanel>
     </Grid>
 </UserControl>

@@ -24,5 +24,24 @@ namespace Calculator
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            function1TextBox.Clear();
+            function2TextBox.Clear();
+            function3TextBox.Clear();
+
+            BitmapImage blankGraph = new BitmapImage(new Uri("/img/blankgraph.jpg", UriKind.Relative));
+            GraphImage.Source = blankGraph;
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (function1TextBox.Text == "x^2")
+            {
+                BitmapImage parabolaGraph = new BitmapImage(new Uri("/img/parabolagraph.jpg", UriKind.Relative));
+                GraphImage.Source = parabolaGraph;
+            }
+        }
     }
 }

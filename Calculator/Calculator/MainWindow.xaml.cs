@@ -91,6 +91,19 @@ namespace Calculator
             InputValue();
         }
 
+        private void XBUtton_Click(object sender, RoutedEventArgs e)
+        {
+            buttonValue = "x";
+            InputValue();
+        }
+
+        private void CarrotButton_Click(object sender, RoutedEventArgs e)
+        {
+            buttonValue = "^";
+            InputValue();
+        }
+
+
         private void NegativeButton_Click(object sender, RoutedEventArgs e)
         {
             // An if loop is used to determine which value (stringX or stringY) warrants the negative sign
@@ -272,7 +285,7 @@ namespace Calculator
                     {
                         y = y * (-1);
                     }
-                    
+
                     // If both conditions are met, a switch is used to determine which operation should be performed on the two values
                     switch (operation)
                     {
@@ -330,22 +343,22 @@ namespace Calculator
                                 equation = (negativeSignX + stringX + " " + operation + " " + negativeSignY + stringY + " = " + stringZ);
                                 break;
                             }
-                    }
 
-                    UpdateCalculatorScreen();
-                    // String equation is stored to a drop-down box to be recalled later if the user chooses
-                    InsertEquationToMemory();
-                    // Finally values are cleared to perform a new operation
-                    stringX = null;
-                    stringY = null;
-                    stringZ = null;
-                    valueHolder = String.Empty;
-                    equation = String.Empty;
-                    // Negative boolean for X and Y values are reset to false for next equation
-                    negativeX = false;
-                    negativeY = false;
-                    negativeSignX = null;
-                    negativeSignY = null;
+                            UpdateCalculatorScreen();
+                            // String equation is stored to a drop-down box to be recalled later if the user chooses
+                            InsertEquationToMemory();
+                            // Finally values are cleared to perform a new operation
+                            stringX = null;
+                            stringY = null;
+                            stringZ = null;
+                            valueHolder = String.Empty;
+                            equation = String.Empty;
+                            // Negative boolean for X and Y values are reset to false for next equation
+                            negativeX = false;
+                            negativeY = false;
+                            negativeSignX = null;
+                            negativeSignY = null;
+                    }
                 }
             }
         }
