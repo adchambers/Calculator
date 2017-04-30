@@ -343,30 +343,29 @@ namespace Calculator
                                 equation = (negativeSignX + stringX + " " + operation + " " + negativeSignY + stringY + " = " + stringZ);
                                 break;
                             }
-
-                            UpdateCalculatorScreen();
-                            // String equation is stored to a drop-down box to be recalled later if the user chooses
-                            InsertEquationToMemory();
-                            // Finally values are cleared to perform a new operation
-                            stringX = null;
-                            stringY = null;
-                            stringZ = null;
-                            valueHolder = String.Empty;
-                            equation = String.Empty;
-                            // Negative boolean for X and Y values are reset to false for next equation
-                            negativeX = false;
-                            negativeY = false;
-                            negativeSignX = null;
-                            negativeSignY = null;
                     }
                 }
             }
+            UpdateCalculatorScreen();
+            // String equation is stored to a drop-down box to be recalled later if the user chooses
+            InsertEquationToMemory();
+            // Finally values are cleared to perform a new operation
+            stringX = null;
+            stringY = null;
+            stringZ = null;
+            valueHolder = String.Empty;
+            equation = String.Empty;
+            // Negative boolean for X and Y values are reset to false for next equation
+            negativeX = false;
+            negativeY = false;
+            negativeSignX = null;
+            negativeSignY = null;
         }
 
         // The save function uses a save file dialog which, by default, is set to save all indices in the equationMemory drop-down box to a text file
         public void SaveFile()
         {
-            
+
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             // The save file dialog is set, by default, to save the user's data to a text file
             saveFileDialog.DefaultExt = "txt";
@@ -418,7 +417,7 @@ namespace Calculator
         }
 
         // This function is used when the equals button is clicked to store the user's current equation to a string array named equationMemory
-        public void InsertEquationToMemory()
+        private void InsertEquationToMemory()
         {
             index = Array.IndexOf(equationMemory, null);
             equationMemory[index] = equation;
@@ -427,7 +426,7 @@ namespace Calculator
         }
 
         // A function named InputValue is used to capture each number when its corresponding button is clicked
-        void InputValue()
+        private void InputValue()
         {
 
             inputBox.Text = inputBox.Text + buttonValue;
@@ -437,13 +436,13 @@ namespace Calculator
             UpdateCalculatorScreen();
         }
 
-        //An additional function is used to gather the value stored in valueHolder
-        void GatherValues()
+        // An additional function is used to gather the value stored in valueHolder
+        private void GatherValues()
         {
 
-            //When the user clicks an operator (+, -, *, or /) the string value contained in valueHolder is assigned to either a string named stringX (if it is null) or stringY (if stringX is NOT null)
+            // When the user clicks an operator (+, -, *, or /) the string value contained in valueHolder is assigned to either a string named stringX (if it is null) or stringY (if stringX is NOT null)
             if (stringX == null)
-            { 
+            {
                 stringX = valueHolder;
                 valueHolder = null;
             }
@@ -457,9 +456,12 @@ namespace Calculator
         // The UI contains a drop-down box (MemorySelection) which allows the user to recall previously entered equations
         private void MemorySelection_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            equation = Convert.ToString(MemorySelection.SelectedValue);
+            InsertEquationToMemory();
             // When a previously entered equation is selected, the correponding display (inputBox or calculatorInputBox) is updated--whichever is active
             inputBox.Text = inputBox.Text + MemorySelection.SelectedValue + "\n";
             UpdateCalculatorScreen();
+            memory = inputBox.Text;
         }
 
         // The user has the option to create additional tools in the tab area of their UI
@@ -520,7 +522,6 @@ namespace Calculator
             tab.Header = ("Scratchpad" + scratchpadIncrement);
             tab.Name = ("Scratchpad" + scratchpadIncrement);
             scratchpadIncrement++;
-            tab.Content = Application.LoadComponent(new Uri("GraphLayout.xaml", UriKind.Relative));
             TabsMenu.Items.Add(tab);
             tab.IsSelected = true;
         }
