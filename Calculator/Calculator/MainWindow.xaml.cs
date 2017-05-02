@@ -521,6 +521,7 @@ namespace Calculator
             TabItem tab = new TabItem();
             tab.Header = ("Scratchpad" + scratchpadIncrement);
             tab.Name = ("Scratchpad" + scratchpadIncrement);
+            tab.Content = Application.LoadComponent(new Uri("ScratchPad.xaml", UriKind.Relative)); ;
             scratchpadIncrement++;
             TabsMenu.Items.Add(tab);
             tab.IsSelected = true;
