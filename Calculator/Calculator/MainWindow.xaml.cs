@@ -141,6 +141,13 @@ namespace Calculator
             this.Close();
         }
 
+        private void GoogleDriveButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            var GoogleDriveWindow = new GoogleDriveWindow();
+            GoogleDriveWindow.Show();
+        }
+
         // Used to save all text within a textbox named inputBox
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
@@ -511,7 +518,7 @@ namespace Calculator
             tab.Name = ("Graph" + graphIncrement);
             graphIncrement++;
             // Calls a static image of a graph
-            tab.Content = Application.LoadComponent(new Uri("GraphLayout.xaml", UriKind.Relative)); ;
+            tab.Content = Application.LoadComponent(new Uri("GraphLayout.xaml", UriKind.Relative));
             TabsMenu.Items.Add(tab);
             tab.IsSelected = true;
         }

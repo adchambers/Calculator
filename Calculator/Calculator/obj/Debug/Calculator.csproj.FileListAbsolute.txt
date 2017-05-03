@@ -47,3 +47,5 @@ D:\Dropbox\Projects\C#\Calculator\Calculator\Calculator\obj\Debug\GraphLayout.g.
 D:\Dropbox\Projects\C#\Calculator\Calculator\Calculator\obj\Debug\GraphLayout.baml
 C:\Users\Adam\Dropbox\Projects\C#\Calculator\Calculator\Calculator\obj\Debug\GraphLayout.g.cs
 C:\Users\Adam\Dropbox\Projects\C#\Calculator\Calculator\Calculator\obj\Debug\GraphLayout.baml
+C:\Users\Adam\Dropbox\Projects\C#\Calculator\Calculator\Calculator\obj\Debug\GoogleDriveWindow.g.cs
+C:\Users\Adam\Dropbox\Projects\C#\Calculator\Calculator\Calculator\obj\Debug\GoogleDriveWindow.baml

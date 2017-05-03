@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("graphlayout.xml")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("img/google.jpg")]
 
 
