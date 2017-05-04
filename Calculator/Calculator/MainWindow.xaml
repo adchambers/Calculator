@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-﻿<Window
+<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -9,6 +8,7 @@
         mc:Ignorable="d"
         Title="Omni Calculator" Height="768" Width="1024" ResizeMode="NoResize"
         Icon="/img/calculator.jpg">
+
 
     <Grid>
 
@@ -41,13 +41,7 @@
             </Menu>
             <ComboBox x:Name="MemorySelection" Height="26" VerticalAlignment="Top" Width="238" Margin="0,-14,700,0" IsEditable="True" Text="Equation History" SelectionChanged="MemorySelection_SelectionChanged"/>
         </DockPanel>
-
-
-
-
-
-
-
+        
         <WrapPanel Margin="310,35,0,0" VerticalAlignment="Top">
             <TabControl x:Name="TabsMenu" Width="692" Margin="0" Height="664" SelectionChanged="TabsMenu_SelectionChanged">
                 <TabItem x:Name="CalculatorTab" Header="Calculator">
@@ -163,160 +157,4 @@
             </Button.Background>
         </Button>
     </Grid>
-=======
-﻿<Window
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Calculator"
-        xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero" x:Class="Calculator.MainWindow"
-        mc:Ignorable="d"
-        Title="Omni Calculator" Height="768" Width="1024" ResizeMode="NoResize"
-        Icon="/img/calculator.jpg">
-
-    <Grid>
-
-        <DockPanel Background="#FEE6E6E6">
-            <Menu DockPanel.Dock="Top" HorizontalAlignment="Left" Width="1018" VerticalAlignment="Top" Height="100" >
-                <Menu.Background>
-                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
-                        <GradientStop Color="#FF323232" Offset="0.028"/>
-                        <GradientStop Color="#FEE6E6E6" Offset="0.2371"/>
-                        <GradientStop Color="Black" Offset="0.237"/>
-                    </LinearGradientBrush>
-                </Menu.Background>
-                <MenuItem Header="_File" Foreground="#FFBFBFBF">
-                    <MenuItem x:Name="FileMenu_Open" Header="_Open" Foreground="Black" Click="FileMenu_Open_Click"/>
-                    <MenuItem x:Name="FileMenu_Save" Header="_Save" Foreground="Black" Click="FileMenu_Save_Click"/>
-                    <MenuItem x:Name="FileMenu_Close" Header="_Close" Foreground="Black" Click="FileMenu_Close_Click"/>
-                </MenuItem>
-                <MenuItem Header="_Tools" Foreground="#FFBFBFBF">
-                    <MenuItem Header="_Insert" Foreground="Black">
-                        <MenuItem x:Name="FileMenu_AddCalculator" Header="Add Calculator" HorizontalAlignment="Left" Click="FileMenu_AddCalculator_Click"/>
-                        <MenuItem x:Name="FileMenu_AddGraph" Header="Add Graph" HorizontalAlignment="Left" Click="FileMenu_AddGraph_Click"/>
-                        <MenuItem x:Name="FileMenu_AddScratchpad" Header="Add Scratchpad" HorizontalAlignment="Left" Click="FileMenu_AddScratchpad_Click"/>
-                    </MenuItem>
-                </MenuItem>
-                <MenuItem Header="_Help" Foreground="#FFBFBFBF">
-                    <MenuItem Header="_About" Foreground="Black"/>
-                </MenuItem>
-            </Menu>
-            <ComboBox x:Name="MemorySelection" Height="26" VerticalAlignment="Top" Width="238" Margin="0,-14,700,0" IsEditable="True" Text="Equation History" SelectionChanged="MemorySelection_SelectionChanged"/>
-        </DockPanel>
-
-
-
-
-
-
-
-        <WrapPanel Margin="310,35,0,0" VerticalAlignment="Top">
-            <TabControl x:Name="TabsMenu" Width="692" Margin="0" Height="664" SelectionChanged="TabsMenu_SelectionChanged">
-                <TabItem x:Name="CalculatorTab" Header="Calculator">
-                    <TextBox x:Name="inputBox" HorizontalAlignment="Center" Margin="0,0,-0.4,-1" VerticalAlignment="Top" Width="686" Height="637" VerticalScrollBarVisibility="Visible"/>
-                </TabItem>
-
-            </TabControl>
-        </WrapPanel>
-        <DockPanel Background="#FEE6E6E6" Margin="0,0,0,-714" Height="22">
-            <Menu DockPanel.Dock="Bottom" HorizontalAlignment="Left" Width="1018" VerticalAlignment="Bottom" Height="22" >
-                <Menu.Background>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="#FFA4A4A4" Offset="0"/>
-                        <GradientStop Color="#FFE6E6E6" Offset="1"/>
-                    </LinearGradientBrush>
-                </Menu.Background>
-            </Menu>
-        </DockPanel>
-
-        <Image Margin="12,125,714,41" Source="/img/calculator.jpg" Stretch="Fill"/>
-        <Button x:Name="AddButton" Content="+" HorizontalAlignment="Left" Margin="222,505,0,0" VerticalAlignment="Top"  Width="24" Height="18" HorizontalContentAlignment="Center"  Click="AddButton_Click" Style="{DynamicResource ButtonStyle1}"/>
-        <Button x:Name="SubtractButton" Content="-" HorizontalAlignment="Left" Margin="248,505,0,0" VerticalAlignment="Top"  Width="24" Height="18" HorizontalContentAlignment="Center"  Click="SubtractButton_Click" Style="{DynamicResource ButtonStyle1}" FontSize="10"/>
-        <Button x:Name="DivideButton" Content="/" HorizontalAlignment="Left" Margin="248,537,0,0" VerticalAlignment="Top"  Width="24" Height="18" HorizontalContentAlignment="Center"  Click="DivideButton_Click" Style="{DynamicResource ButtonStyle1}" FontSize="8"/>
-        <Button x:Name="EqualsButton" Content="=" HorizontalAlignment="Left" Margin="222,597,0,0" VerticalAlignment="Top"  Width="50" Height="18" HorizontalContentAlignment="Center"  Click="EqualsButton_Click" Style="{DynamicResource ButtonStyle1}" FontSize="10"/>
-        <Button x:Name="ClearButton" Content="Clr" HorizontalAlignment="Left" Margin="248,567,0,0" VerticalAlignment="Top"  Width="24" Height="18" HorizontalContentAlignment="Center"  Click="ClearButton_Click" Style="{DynamicResource ButtonStyle1}" FontSize="8"/>
-        <Button x:Name="MultiplyButton" Content="*" HorizontalAlignment="Left" Margin="222,537,0,0" VerticalAlignment="Top" Width="24" Height="18" HorizontalContentAlignment="Center"  Click="MultiplyButton_Click" Style="{DynamicResource ButtonStyle1}" FontSize="10"/>
-        <Button x:Name="OneButton"  Content="1" HorizontalAlignment="Left" Margin="90,563,0,0" VerticalAlignment="Top"  Width="40" Height="26" HorizontalContentAlignment="Center"  Click="OneButton_Click" Style="{DynamicResource NumberButtonStyle}" FontWeight="Bold"/>
-        <Button x:Name="TwoButton"  Content="2" HorizontalAlignment="Left" Margin="134,563,0,0" VerticalAlignment="Top"  Width="40" Height="26" HorizontalContentAlignment="Center"  Click="TwoButton_Click" Style="{DynamicResource NumberButtonStyle}" FontWeight="Bold"/>
-        <Button x:Name="ZeroButton" Content="0" HorizontalAlignment="Left" Margin="90,593,0,0" VerticalAlignment="Top"  Width="40" Height="26" HorizontalContentAlignment="Center" Click="ZeroButton_Click" Style="{DynamicResource NumberButtonStyle}" FontWeight="Bold"/>
-        <Button x:Name="ThreeButton" Content="3" HorizontalAlignment="Left" Margin="178,563,0,0" VerticalAlignment="Top"  Width="40" Height="26" HorizontalContentAlignment="Center" Click="ThreeButton_Click" Style="{DynamicResource NumberButtonStyle}" FontWeight="Bold"/>
-        <Button x:Name="FourButton" Content="4" HorizontalAlignment="Left" Margin="90,533,0,0" VerticalAlignment="Top"  Width="40" Height="24" HorizontalContentAlignment="Center" Click="FourButton_Click" Style="{DynamicResource NumberButtonStyle}" FontWeight="Bold"/>
-        <Button x:Name="FiveButton" Content="5" HorizontalAlignment="Left" Margin="134,533,0,0" VerticalAlignment="Top"  Width="40" Height="24" HorizontalContentAlignment="Center" Click="FiveButton_Click" Style="{DynamicResource NumberButtonStyle}" FontWeight="Bold"/>
-        <Button x:Name="SixButton" Content="6" HorizontalAlignment="Left" Margin="178,533,0,0" VerticalAlignment="Top"  Width="40" Height="24" HorizontalContentAlignment="Center" Click="SixButton_Click" Style="{DynamicResource NumberButtonStyle}" FontWeight="Bold"/>
-        <Button x:Name="SevenButton" Content="7" HorizontalAlignment="Left" Margin="90,501,0,0" VerticalAlignment="Top"  Width="40" Height="26" HorizontalContentAlignment="Center" Click="SevenButton_Click" Style="{DynamicResource NumberButtonStyle}" FontWeight="Bold"/>
-        <Button x:Name="EightButton" Content="8" HorizontalAlignment="Left" Margin="134,501,0,0" VerticalAlignment="Top"  Width="40" Height="26" HorizontalContentAlignment="Center" Click="EightButton_Click" Style="{DynamicResource NumberButtonStyle}" FontWeight="Bold"/>
-        <Button x:Name="NineButton" Content="9" HorizontalAlignment="Left" Margin="178,501,0,0" VerticalAlignment="Top"  Width="40" Height="26" HorizontalContentAlignment="Center" Click="NineButton_Click" Style="{DynamicResource NumberButtonStyle}" FontWeight="Bold"/>
-        <Button x:Name="DecimalButton" Content="." HorizontalAlignment="Left" Margin="134,593,0,0" VerticalAlignment="Top"  Width="40" Height="26" HorizontalContentAlignment="Center" Click="DecimalButton_Click" Style="{DynamicResource NumberButtonStyle}" FontWeight="Bold"/>
-
-        <Button x:Name="NegativeButton" Content="(-)" HorizontalAlignment="Left" Margin="178,593,0,0" VerticalAlignment="Top"  Width="40" Height="26" HorizontalContentAlignment="Center" Style="{DynamicResource NumberButtonStyle}" FontWeight="Bold" Click="NegativeButton_Click"/>
-        <Button x:Name="EnterButton" Content="Enter" HorizontalAlignment="Left" Margin="34,597,0,0" VerticalAlignment="Top"  Width="52" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle1}" FontSize="10"/>
-        <Button x:Name="ParenthesisButton" Content="( )" HorizontalAlignment="Left" Margin="34,505,0,0" VerticalAlignment="Top"  Width="24" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle1}" FontSize="10"/>
-        <Button x:Name="ExponentButton" Content="x " HorizontalAlignment="Left" Margin="62,535,0,0" VerticalAlignment="Top"  Width="24" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle1}" FontSize="10"/>
-        <Button x:Name="VariableButton" Content="var" HorizontalAlignment="Left" Margin="34,535,0,0" VerticalAlignment="Top" Width="24" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle1}" FontSize="8"/>
-        <TextBlock HorizontalAlignment="Left" Margin="76,539,0,0" TextWrapping="Wrap" Text="2" VerticalAlignment="Top" Foreground="Black" FontSize="6"/>
-        <Button x:Name="TrigButton" Content="trig" HorizontalAlignment="Left" Margin="62,567,0,0" VerticalAlignment="Top" Width="24" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle1}" FontSize="8"/>
-        <Button x:Name="CarrotButton" Content="^" HorizontalAlignment="Left" Margin="62,505,0,0" VerticalAlignment="Top"  Width="24" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle1}" FontSize="10" Click="CarrotButton_Click"/>
-        <Button x:Name="DeleteButton" Content="Del" HorizontalAlignment="Left" Margin="222,567,0,0" VerticalAlignment="Top" Width="24" Height="18" HorizontalContentAlignment="Center"  Click="MultiplyButton_Click" Style="{DynamicResource ButtonStyle1}" FontSize="8"/>
-        <Button x:Name="AButton" Content="a" HorizontalAlignment="Left" Margin="54,377,0,0" VerticalAlignment="Top"  Width="18" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle2}" FontSize="8"/>
-        <Button x:Name="BButton" Content="b" HorizontalAlignment="Left" Margin="78,377,0,0" VerticalAlignment="Top"  Width="18" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle2}" FontSize="8"/>
-        <Button x:Name="CButton" Content="c" HorizontalAlignment="Left" Margin="104,377,0,0" VerticalAlignment="Top"  Width="18" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle2}" FontSize="8"/>
-        <Button x:Name="DButton" Content="d" HorizontalAlignment="Left" Margin="132,377,0,0" VerticalAlignment="Top"  Width="18" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle2}" FontSize="8"/>
-        <Button x:Name="EButton" Content="e" HorizontalAlignment="Left" Margin="158,377,0,0" VerticalAlignment="Top"  Width="18" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle2}" FontSize="8"/>
-        <Button x:Name="FButton" Content="f" HorizontalAlignment="Left" Margin="184,377,0,0" VerticalAlignment="Top"  Width="18" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle2}" FontSize="8"/>
-        <Button x:Name="GButton" Content="g" HorizontalAlignment="Left" Margin="210,377,0,0" VerticalAlignment="Top"  Width="18" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle2}" FontSize="8"/>
-        <Button x:Name="HButton" Content="h" HorizontalAlignment="Left" Margin="238,377,0,0" VerticalAlignment="Top"  Width="18" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle2}" FontSize="8"/>
-        <Button x:Name="IButton" Content="i" HorizontalAlignment="Left" Margin="54,401,0,0" VerticalAlignment="Top"  Width="18" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle2}" FontSize="8"/>
-        <Button x:Name="JButton" Content="j" HorizontalAlignment="Left" Margin="78,401,0,0" VerticalAlignment="Top"  Width="18" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle2}" FontSize="8"/>
-        <Button x:Name="KButton" Content="k" HorizontalAlignment="Left" Margin="104,401,0,0" VerticalAlignment="Top"  Width="18" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle2}" FontSize="8"/>
-        <Button x:Name="LButton" Content="l" HorizontalAlignment="Left" Margin="132,401,0,0" VerticalAlignment="Top"  Width="18" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle2}" FontSize="8"/>
-        <Button x:Name="MButton" Content="m" HorizontalAlignment="Left" Margin="158,401,0,0" VerticalAlignment="Top"  Width="18" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle2}" FontSize="8"/>
-        <Button x:Name="NButton" Content="n" HorizontalAlignment="Left" Margin="184,401,0,0" VerticalAlignment="Top"  Width="18" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle2}" FontSize="8"/>
-        <Button x:Name="OButton" Content="o" HorizontalAlignment="Left" Margin="210,401,0,0" VerticalAlignment="Top"  Width="18" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle2}" FontSize="8"/>
-        <Button x:Name="PButton" Content="p" HorizontalAlignment="Left" Margin="238,401,0,0" VerticalAlignment="Top"  Width="18" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle2}" FontSize="8"/>
-        <Button x:Name="QButton" Content="q" HorizontalAlignment="Left" Margin="54,425,0,0" VerticalAlignment="Top"  Width="18" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle2}" FontSize="8"/>
-        <Button x:Name="RButton" Content="r" HorizontalAlignment="Left" Margin="78,425,0,0" VerticalAlignment="Top"  Width="18" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle2}" FontSize="8"/>
-        <Button x:Name="SButton" Content="s" HorizontalAlignment="Left" Margin="104,425,0,0" VerticalAlignment="Top"  Width="18" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle2}" FontSize="8"/>
-        <Button x:Name="TButton" Content="t" HorizontalAlignment="Left" Margin="132,425,0,0" VerticalAlignment="Top"  Width="18" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle2}" FontSize="8"/>
-        <Button x:Name="UButton" Content="u" HorizontalAlignment="Left" Margin="158,425,0,0" VerticalAlignment="Top"  Width="18" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle2}" FontSize="8"/>
-        <Button x:Name="VButton" Content="v" HorizontalAlignment="Left" Margin="184,425,0,0" VerticalAlignment="Top"  Width="18" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle2}" FontSize="8"/>
-        <Button x:Name="WButton" Content="w" HorizontalAlignment="Left" Margin="210,425,0,0" VerticalAlignment="Top"  Width="18" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle2}" FontSize="8"/>
-        <Button x:Name="XBUtton" Content="x" HorizontalAlignment="Left" Margin="238,425,0,0" VerticalAlignment="Top"  Width="18" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle2}" FontSize="8" Click="XBUtton_Click"/>
-        <Button x:Name="YButton" Content="y" HorizontalAlignment="Left" Margin="104,449,0,0" VerticalAlignment="Top"  Width="18" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle2}" FontSize="8"/>
-        <Button x:Name="ZButton" Content="z" HorizontalAlignment="Left" Margin="132,449,0,0" VerticalAlignment="Top"  Width="18" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle2}" FontSize="8"/>
-        <Button x:Name="LeftButton" Content="Back" HorizontalAlignment="Left" Margin="54,449,0,0" VerticalAlignment="Top"  Width="42" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle2}" FontSize="8"/>
-        <Button x:Name="RightButton" Content="Forward" HorizontalAlignment="Left" Margin="210,449,0,0" VerticalAlignment="Top"  Width="46" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle2}" FontSize="8"/>
-        <Button x:Name="SpaceButton" Content="Space" HorizontalAlignment="Left" Margin="158,449,0,0" VerticalAlignment="Top"  Width="44" Height="18" HorizontalContentAlignment="Center" Style="{DynamicResource ButtonStyle2}" FontSize="8"/>
-        <TextBlock HorizontalAlignment="Left" Margin="90,665,0,0" TextWrapping="Wrap" Text="System.out Instruments" VerticalAlignment="Top" FontFamily="Windows Command Prompt" Foreground="#FFA6A6A6" FontSize="14" FontStyle="Italic" TextDecorations="{x:Null}"/>
-        <Button x:Name="TrigButton_Copy" Content="Ctrl" HorizontalAlignment="Left" Margin="34,567,0,0" VerticalAlignment="Top" Width="24" Height="18" HorizontalContentAlignment="Center" FontSize="8" Style="{DynamicResource ButtonStyle3}"/>
-        <TextBlock HorizontalAlignment="Left" Margin="42,493,0,0" TextWrapping="Wrap" Text="[ ]" VerticalAlignment="Top" Foreground="#FF93DFFF" FontSize="8" FontWeight="Bold"/>
-        <TextBlock HorizontalAlignment="Left" Margin="40,523,0,0" TextWrapping="Wrap" Text="log" VerticalAlignment="Top" Foreground="#FF93DFFF" FontSize="8" FontWeight="Bold"/>
-        <TextBlock HorizontalAlignment="Left" Margin="70,523,0,0" TextWrapping="Wrap" Text="√" VerticalAlignment="Top" Foreground="#FF93DFFF" FontSize="8" FontWeight="Bold"/>
-        <TextBlock HorizontalAlignment="Left" Margin="70,493,0,0" TextWrapping="Wrap" Text="{}{ }" VerticalAlignment="Top" Foreground="#FF93DFFF" FontSize="8" FontWeight="Bold"/>
-        <TextBlock HorizontalAlignment="Left" Margin="70,555,0,0" TextWrapping="Wrap" Text="ln" VerticalAlignment="Top" Foreground="#FF93DFFF" FontSize="8" FontWeight="Bold"/>
-        <TextBlock HorizontalAlignment="Left" Margin="224,493,0,0" TextWrapping="Wrap" Text="+tab" VerticalAlignment="Top" Foreground="#FF93DFFF" FontSize="8" FontWeight="Bold"/>
-        <TextBlock HorizontalAlignment="Left" Margin="252,524,0,0" TextWrapping="Wrap" Text="x / y" VerticalAlignment="Top" Foreground="#FF93DFFF" FontSize="8" FontWeight="Bold" FontStyle="Italic"/>
-        <TextBlock HorizontalAlignment="Left" Margin="230,525,0,0" TextWrapping="Wrap" Text="π" VerticalAlignment="Top" Foreground="#FF93DFFF" FontSize="8" FontWeight="Bold"/>
-        <TextBlock HorizontalAlignment="Left" Margin="244,587,0,0" TextWrapping="Wrap" Text="~" VerticalAlignment="Top" Foreground="#FF93DFFF" FontSize="10" FontWeight="Bold"/>
-        <TextBlock HorizontalAlignment="Left" Margin="244,583,0,0" TextWrapping="Wrap" Text="~" VerticalAlignment="Top" Foreground="#FF93DFFF" FontSize="10" FontWeight="Bold"/>
-        <Image Margin="162,43,822,663" Source="/img/1492965060_insert-object.png" Stretch="Fill"/>
-        <Image Margin="214,43,770,663" Source="/img/1492965122_21_sharethis.png" Stretch="Fill"/>
-        <ComboBox x:Name="TabController" Height="26" VerticalAlignment="Top" Margin="768,30,15.6,0" IsEditable="True" Text="Add Tab" SelectionChanged="TabController_SelectionChanged">
-            <ComboBoxItem>Add Calculator</ComboBoxItem>
-            <ComboBoxItem>Add Graph</ComboBoxItem>
-            <ComboBoxItem>Add Scratchpad</ComboBoxItem>
-        </ComboBox>
-        <Button x:Name="SaveButton" HorizontalAlignment="Left" Margin="116,43,0,0" VerticalAlignment="Top" Height="29" Width="29" Click="SaveButton_Click" Style="{DynamicResource ButtonStyle_Save}" BorderThickness="0">
-            <Button.Background>
-                <ImageBrush ImageSource="img/1492964966_floppy_disk_save.png"/>
-            </Button.Background>
-        </Button>
-        <Button x:Name="OpenButton" HorizontalAlignment="Left" Margin="62,43,0,0" VerticalAlignment="Top" Height="29" Width="29" Style="{DynamicResource ButtonStyle_Save}" Click="OpenButton_Click" BorderThickness="0">
-            <Button.Background>
-                <ImageBrush ImageSource="img/1492964945_document-open.png"/>
-            </Button.Background>
-        </Button>
-        <TextBox x:Name="calculatorInputBox" HorizontalAlignment="Left" Height="165" Margin="50,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" BorderThickness="0" VerticalScrollBarVisibility="Visible"/>
-    </Grid>
->>>>>>> eff7407ee8b9f62468b1c5c140bba0d69eb2c1c8
 </Window>
