@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.IO;
@@ -27,7 +27,7 @@ namespace Calculator
         {
             // For each click of a numbered button or decimal, a string named buttonValue is changed to its corresponding string value
             buttonValue = "0";
-            // A function named InputValue is used to store each number to a string named valueHolder
+            // A method named InputValue is used to store each number to a string named valueHolder
             InputValue();
             //Later the collection of these string values (e.g. 123.45) is converted to its decimal equivalent
         }
@@ -369,7 +369,7 @@ namespace Calculator
             negativeSignY = null;
         }
 
-        // The save function uses a save file dialog which, by default, is set to save all indices in the equationMemory drop-down box to a text file
+        // The save method uses a save file dialog which, by default, is set to save all indices in the equationMemory drop-down box to a text file
         public void SaveFile()
         {
 
@@ -396,7 +396,7 @@ namespace Calculator
             }
         }
 
-        // An open function is introduced to open previously save files and works similar to the save file dialog mentioned above.  A try-block is also used here for the same reason as the SaveFile() function.
+        // An open method is introduced to open previously save files and works similar to the save file dialog mentioned above.  A try-block is also used here for the same reason as the SaveFile() method.
         private void OpenFile()
         {
             TabItem tab = new TabItem();
@@ -423,7 +423,7 @@ namespace Calculator
             }
         }
 
-        // This function is used when the equals button is clicked to store the user's current equation to a string array named equationMemory
+        // This method is used when the equals button is clicked to store the user's current equation to a string array named equationMemory
         private void InsertEquationToMemory()
         {
             index = Array.IndexOf(equationMemory, null);
@@ -432,7 +432,7 @@ namespace Calculator
             MemorySelection.Items.Insert(index++, equation);
         }
 
-        // A function named InputValue is used to capture each number when its corresponding button is clicked
+        // A method named InputValue is used to capture each number when its corresponding button is clicked
         private void InputValue()
         {
 
@@ -443,7 +443,7 @@ namespace Calculator
             UpdateCalculatorScreen();
         }
 
-        // An additional function is used to gather the value stored in valueHolder
+        // An additional method is used to gather the value stored in valueHolder
         private void GatherValues()
         {
 
@@ -493,7 +493,7 @@ namespace Calculator
             }
         }
 
-        // A function to create a new calculator tab
+        // A method to create a new calculator tab
         private void NewCalculator()
         {
             TabItem tab = new TabItem();
