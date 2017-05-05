@@ -8,9 +8,168 @@
              VerticalAlignment="Stretch"
              HorizontalAlignment="Stretch"
              d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <!-- Animated Expander Button's Template-->
+        <ControlTemplate x:Key="AnimatedExpanderButtonTemp" TargetType="{x:Type ToggleButton}">
+            <Border x:Name="ExpanderButtonBorder"
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    Padding="{TemplateBinding Padding}"
+                    >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Rectangle Fill="Transparent"
+                               Grid.ColumnSpan="2"/>
+                    <Ellipse Name="Circle"
+                         Grid.Column="0"
+                         Stroke="DarkGray"
+                         Width="20"
+                         Height="20"
+                         HorizontalAlignment="Center"
+                         VerticalAlignment="Center"
+                         />
+                    <Path x:Name="Arrow"
+                      Grid.Column="0"
+                      Data="M 1,1.5 L 4.5,5 8,1.5"
+                      Stroke="#FF666666"
+                      StrokeThickness="2"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Center"
+                      RenderTransformOrigin="0.5,0.5"
+                      >
+                        <Path.RenderTransform>
+                            <RotateTransform Angle="0"/>
+                        </Path.RenderTransform>
+                    </Path>
+                    <ContentPresenter x:Name="HeaderContent"
+                                      Grid.Column="1"
+                                      Margin="4,0,0,0"
+                                      ContentSource="Content"/>
+                </Grid>
+            </Border>
+            <ControlTemplate.Triggers>
+                <!-- Animate arrow when toggled-->
+                <Trigger Property="IsChecked"
+                         Value="True">
+                    <Trigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetName="Arrow"
+                                                 Storyboard.TargetProperty="(Path.RenderTransform).(RotateTransform.Angle)"
+                                                 To="180"
+                                                 Duration="0:0:0.4"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.EnterActions>
+                    <Trigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetName="Arrow"
+                                                 Storyboard.TargetProperty="(Path.RenderTransform).(RotateTransform.Angle)"
+                                                 To="0"
+                                                 Duration="0:0:0.4"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.ExitActions>
+                </Trigger>
+
+                <!-- MouseOver, Pressed behaviours-->
+                <Trigger Property="IsMouseOver"
+                                 Value="true">
+                    <Setter Property="Stroke"
+                                    Value="#FF3C7FB1"
+                                    TargetName="Circle"/>
+                    <Setter Property="Stroke"
+                                    Value="#222"
+                                    TargetName="Arrow"/>
+                </Trigger>
+                <Trigger Property="IsPressed"
+                                 Value="true">
+                    <Setter Property="Stroke"
+                                    Value="#FF526C7B"
+                                    TargetName="Circle"/>
+                    <Setter Property="StrokeThickness"
+                                    Value="1.5"
+                                    TargetName="Circle"/>
+                    <Setter Property="Stroke"
+                                    Value="#FF003366"
+                                    TargetName="Arrow"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="StretchyExpanderTemp" TargetType="{x:Type Expander}">
+            <DockPanel>
+                <ToggleButton x:Name="ExpanderButton" 
+                              DockPanel.Dock="Top"
+                              Template="{StaticResource AnimatedExpanderButtonTemp}"
+                              Content="{TemplateBinding Header}"
+                              IsChecked="{Binding Path=IsExpanded, RelativeSource={RelativeSource TemplatedParent}}"
+                              OverridesDefaultStyle="True"
+                              Padding="1.5,0">
+                </ToggleButton>
+                <ContentPresenter x:Name="ExpanderContent"
+                                  ContentSource="Content"
+                                  DockPanel.Dock="Bottom"
+                                  >
+                    <ContentPresenter.LayoutTransform>
+                        <ScaleTransform ScaleY="0"/>
+                    </ContentPresenter.LayoutTransform>
+                </ContentPresenter>
+            </DockPanel>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsExpanded" Value="True">
+                    <Trigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetName="ExpanderContent"
+                                                 Storyboard.TargetProperty="(ContentPresenter.LayoutTransform).(ScaleTransform.ScaleY)"                                                 
+                                                 To="1"
+                                                 Duration="0:0:0.4"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.EnterActions>
+                    <Trigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetName="ExpanderContent"
+                                                 Storyboard.TargetProperty="(ContentPresenter.LayoutTransform).(ScaleTransform.ScaleY)"
+                                                 To="0"
+                                                 Duration="0:0:0.4"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.ExitActions>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </UserControl.Resources>
     <Grid>
-        <Canvas x:Name="ScratchArea" Background="White" MouseDown="Canvas_MouseDown_1" MouseMove="Canvas_MouseMove_1">
-        </Canvas>
-        <Button Content="Clear" Click="ClearButton_Click" Margin="0,0,253,277" HorizontalAlignment="Left" VerticalAlignment="Top" Width="47"/>
+        <Canvas x:Name="ScratchArea" Background="White" MouseDown="Canvas_MouseDown_1" MouseMove="Canvas_MouseMove_1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Top" Background="Gray">
+            <Expander x:Name="ColorExpander" Template="{StaticResource StretchyExpanderTemp}"
+                  OverridesDefaultStyle="True"
+                  Header="Color"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Top"
+                  Margin="5,2,5,0"
+                  MouseMove="ColorExpander_MouseMove"
+                  MouseDown="ColorExpander_MouseDown"
+                  >
+                <StackPanel Margin="10,4,0,0">
+                    <RadioButton x:Name="ColorBlack" GroupName="color" Content="Black" IsChecked="True" Checked="ColorBlack_Checked"/>
+                    <RadioButton x:Name="ColorRed" GroupName="color" Content="Red" Checked="ColorRed_Checked"/>
+                    <RadioButton x:Name="ColorBlue" GroupName="color" Content="Blue" Checked="ColorBlue_Checked"/>
+                    <RadioButton x:Name="ColorGreen" GroupName="color" Content="Green" Checked="ColorGreen_Checked"/>
+                </StackPanel>
+            </Expander>
+            <RadioButton x:Name="ToolDraw" GroupName="tool" Margin="5,2,5,0" Content="Draw" IsChecked="True" Checked="ToolDraw_Checked"/>
+            <RadioButton x:Name="ToolText" GroupName="tool" Margin="5,2,5,0" Content="Text" Checked="ToolText_Checked"/>
+            <RadioButton x:Name="ToolImage" GroupName="tool" Margin="5,2,5,0" Content="Image" Checked="ToolImage_Checked"/>
+            <Button Content="Clear" Click="ClearButton_Click" Margin="5,2,5,2" Width="47" Height="20" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center"/>
+        </StackPanel>
     </Grid>
 </UserControl>
