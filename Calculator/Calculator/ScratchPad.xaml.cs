@@ -20,9 +20,11 @@ namespace Calculator
         const string IMAGE_TOOL = "image";
 
         Point currentPoint = new Point();
-        Point expanderCurrentPoint = new Point();
+        Point elementCurrentPoint = new Point();
         Color selectedColor = Colors.Black;
         string selectedTool = DRAW_TOOL;
+
+        bool mouseDownCaptured = false;
 
         public ScratchPad()
         {
@@ -59,6 +61,9 @@ namespace Calculator
             textBox.AcceptsReturn = true;
             textBox.AcceptsTab = true;
             textBox.SpellCheck.IsEnabled = true;
+            textBox.MouseDown += CanvasObject_MouseDown;
+            textBox.MouseMove += CanvasObject_MouseMove;
+            textBox.MouseUp += CanvasObject_MouseUp;
             ScratchArea.Children.Add(textBox);
             Canvas.SetTop(textBox, e.GetPosition(ScratchArea).Y);
             Canvas.SetLeft(textBox, e.GetPosition(ScratchArea).X);
@@ -79,6 +84,9 @@ namespace Calculator
                 Image image = new Image();
                 BitmapImage uploadedImage = new BitmapImage(new Uri(op.FileName));
                 image.Source = uploadedImage;
+                image.MouseDown += CanvasObject_MouseDown;
+                image.MouseMove += CanvasObject_MouseMove;
+                image.MouseUp += CanvasObject_MouseUp;
                 ScratchArea.Children.Add(image);
                 Canvas.SetTop(image, y);
                 Canvas.SetLeft(image, x);
@@ -120,26 +128,33 @@ namespace Calculator
             ScratchArea.Children.Clear();
         }
 
-        private void ColorExpander_MouseMove(object sender, MouseEventArgs e)
+        private void CanvasObject_MouseMove(object sender, MouseEventArgs e)
         {
-            if (e.LeftButton == MouseButtonState.Pressed)
+            if (e.LeftButton == MouseButtonState.Pressed && mouseDownCaptured)
             {
-                double deltaX = expanderCurrentPoint.X - e.GetPosition(ScratchArea).X;
-                double deltaY = expanderCurrentPoint.Y - e.GetPosition(ScratchArea).Y;
-                Canvas.SetTop(ColorExpander, Canvas.GetTop(ColorExpander) + deltaY);
-                Canvas.SetLeft(ColorExpander, Canvas.GetLeft(ColorExpander) + deltaX);
-                expanderCurrentPoint.X = Canvas.GetLeft(ColorExpander);
-                expanderCurrentPoint.Y = Canvas.GetTop(ColorExpander);
+                UIElement element = (UIElement) sender;
+                double deltaX = elementCurrentPoint.X - e.GetPosition(ScratchArea).X;
+                double deltaY = elementCurrentPoint.Y - e.GetPosition(ScratchArea).Y;
+                Canvas.SetTop(element, Canvas.GetTop(element) - deltaY);
+                Canvas.SetLeft(element, Canvas.GetLeft(element) - deltaX);
+                elementCurrentPoint.X = Canvas.GetLeft(element);
+                elementCurrentPoint.Y = Canvas.GetTop(element);
 
             }
         }
 
-        private void ColorExpander_MouseDown(object sender, MouseButtonEventArgs e)
+        private void CanvasObject_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            mouseDownCaptured = false;
+        }
+
+        private void CanvasObject_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ButtonState == MouseButtonState.Pressed)
             {
-                expanderCurrentPoint.X = Canvas.GetLeft(ColorExpander);
-                expanderCurrentPoint.Y = Canvas.GetTop(ColorExpander);
+                elementCurrentPoint.X = e.GetPosition(ScratchArea).X;
+                elementCurrentPoint.Y = e.GetPosition(ScratchArea).Y;
+                mouseDownCaptured = true;
             }
 
         }

@@ -156,8 +156,6 @@
                   HorizontalAlignment="Left"
                   VerticalAlignment="Top"
                   Margin="5,2,5,0"
-                  MouseMove="ColorExpander_MouseMove"
-                  MouseDown="ColorExpander_MouseDown"
                   >
                 <StackPanel Margin="10,4,0,0">
                     <RadioButton x:Name="ColorBlack" GroupName="color" Content="Black" IsChecked="True" Checked="ColorBlack_Checked"/>
