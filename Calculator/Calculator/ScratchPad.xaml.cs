@@ -61,9 +61,6 @@ namespace Calculator
             textBox.AcceptsReturn = true;
             textBox.AcceptsTab = true;
             textBox.SpellCheck.IsEnabled = true;
-            textBox.MouseDown += CanvasObject_MouseDown;
-            textBox.MouseMove += CanvasObject_MouseMove;
-            textBox.MouseUp += CanvasObject_MouseUp;
             ScratchArea.Children.Add(textBox);
             Canvas.SetTop(textBox, e.GetPosition(ScratchArea).Y);
             Canvas.SetLeft(textBox, e.GetPosition(ScratchArea).X);
@@ -84,9 +81,6 @@ namespace Calculator
                 Image image = new Image();
                 BitmapImage uploadedImage = new BitmapImage(new Uri(op.FileName));
                 image.Source = uploadedImage;
-                image.MouseDown += CanvasObject_MouseDown;
-                image.MouseMove += CanvasObject_MouseMove;
-                image.MouseUp += CanvasObject_MouseUp;
                 ScratchArea.Children.Add(image);
                 Canvas.SetTop(image, y);
                 Canvas.SetLeft(image, x);
